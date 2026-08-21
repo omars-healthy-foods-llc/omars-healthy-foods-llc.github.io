@@ -68,6 +68,24 @@
   .brand-text{ font-family:var(--head); font-weight:600; font-size:0.98rem; letter-spacing:0.02em; color:var(--chalk); line-height:1.15; }
   .brand-text small{ display:block; font-family:var(--mono); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--orange); margin-top:2px; }
 
+  .nav-links{
+    display:flex; align-items:center; gap:clamp(16px,2.4vw,30px);
+    list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    font-family:var(--head); font-weight:500; font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase;
+    text-decoration:none; color:var(--chalk-dim); white-space:nowrap;
+    padding-bottom:3px; border-bottom:1px solid transparent;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color:var(--orange); border-color:var(--orange); }
+
+  .nav-toggle{
+    display:none; background:none; border:1px solid var(--steel-line-strong); border-radius:2px;
+    width:38px; height:38px; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .nav-toggle svg{ width:18px; height:18px; color:var(--chalk); }
+
   .nav-right{ display:flex; align-items:center; gap:14px; }
   .lang-toggle{
     display:flex; border:1px solid var(--steel-line-strong); border-radius:20px; overflow:hidden;
@@ -200,6 +218,36 @@
   .macro .num{ font-family:var(--mono); font-weight:700; font-size:0.86rem; color:var(--orange); display:block; }
   .macro .lab{ font-family:var(--mono); font-size:0.56rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--chalk-dim-2); display:block; margin-top:3px; }
 
+  /* ---------------- treats ---------------- */
+  .treats{ background:var(--black); }
+  .treat-card{
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    background:var(--panel); border:1px solid var(--steel-line); overflow:hidden;
+  }
+  .treat-photo{ aspect-ratio:4/3; overflow:hidden; }
+  .treat-photo img{ width:100%; height:100%; object-fit:cover; }
+  .treat-facts{ padding:clamp(26px,4vw,40px); display:flex; flex-direction:column; justify-content:center; }
+  .treat-facts h3{
+    font-family:var(--head); font-weight:600; font-size:1.35rem; text-transform:uppercase; letter-spacing:0.01em;
+    color:var(--chalk); margin:0 0 22px; line-height:1.3;
+  }
+  .facts-list{ list-style:none; margin:0 0 22px; padding:0; display:flex; flex-direction:column; gap:0; border-top:1px solid var(--steel-line); }
+  .facts-list li{
+    display:flex; align-items:baseline; justify-content:space-between;
+    padding:13px 2px; border-bottom:1px solid var(--steel-line);
+  }
+  .facts-list .num{ font-family:var(--mono); font-weight:700; font-size:1.1rem; color:var(--orange); }
+  .facts-list .lab{ font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--chalk-dim); }
+  .allergen-flag{
+    display:inline-flex; align-items:center; gap:8px; align-self:flex-start;
+    font-family:var(--head); font-weight:600; font-size:0.85rem; letter-spacing:0.02em; text-transform:uppercase;
+    color:#FF5A5A; border:1px solid rgba(255,90,90,0.5); background:rgba(255,90,90,0.08);
+    padding:9px 14px; border-radius:2px;
+  }
+  @media (max-width:700px){
+    .treat-card{ grid-template-columns:1fr; }
+  }
+
   /* ---------------- build your bowl ---------------- */
   .build{ background:var(--black); }
   .build-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--steel-line); border:1px solid var(--steel-line); margin-top:8px; }
@@ -216,20 +264,66 @@
 
   /* ---------------- bundles ---------------- */
   .bundles{ background:var(--charcoal); border-top:1px solid var(--steel-line); border-bottom:1px solid var(--steel-line); }
-  .bundle-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; }
-  .bundle-card{
-    background:var(--panel); border:1px solid var(--steel-line); padding:30px 26px;
-    display:flex; flex-direction:column; transition:border-color 0.25s ease;
+
+  .tier-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-bottom:22px; }
+  .tier-card{
+    background:var(--panel); border:1px solid var(--steel-line); border-radius:2px;
+    padding:26px 22px 22px; text-align:center; transition:border-color 0.25s ease, transform 0.25s ease;
   }
-  .bundle-card.featured{ border-color:var(--orange); position:relative; }
-  .bundle-card.featured::before{
-    content:attr(data-tag); position:absolute; top:-1px; right:-1px;
-    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase;
-    background:var(--orange); color:var(--black); padding:5px 10px;
+  .tier-card:hover{ transform:translateY(-3px); }
+  .tier-card.featured{ border-color:var(--orange); background:var(--panel-2); }
+  .tier-eyebrow{ font-family:var(--mono); font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--chalk-dim); margin-bottom:6px; }
+  .tier-num{ font-family:var(--display); font-size:3.4rem; line-height:1; color:var(--chalk); }
+  .tier-unit{ font-family:var(--head); font-weight:600; font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--chalk); margin-bottom:14px; }
+  .tier-pill{
+    display:inline-block; font-family:var(--head); font-weight:700; font-size:0.95rem; letter-spacing:0.02em; text-transform:uppercase;
+    background:var(--orange); color:var(--black); padding:7px 18px; border-radius:20px; margin-bottom:14px;
   }
-  .bundle-card h3{ font-family:var(--head); font-weight:600; font-size:1.15rem; text-transform:uppercase; margin:0 0 10px; color:var(--chalk); }
-  .bundle-card p{ font-size:0.92rem; color:var(--chalk-dim); line-height:1.6; margin:0 0 20px; flex:1; }
-  .bundle-card a{ font-family:var(--mono); font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--orange); text-decoration:none; border-bottom:1px solid var(--orange); align-self:flex-start; padding-bottom:2px; }
+  .tier-pill span{ font-weight:600; }
+  .tier-fine{ font-size:0.8rem; color:var(--chalk-dim-2); margin:0; line-height:1.5; }
+
+  .panel-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-bottom:22px; }
+  .info-panel{ background:var(--panel); border:1px solid var(--steel-line); padding:26px 24px; }
+  .info-panel h3{ font-family:var(--head); font-weight:600; font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--orange); margin:0 0 18px; padding-bottom:12px; border-bottom:1px solid var(--steel-line); }
+  .price-block{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .price-lab{ font-family:var(--mono); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--chalk-dim); }
+  .price-num{ font-family:var(--display); font-size:2.2rem; color:var(--chalk); line-height:1; }
+  .price-note{ font-family:var(--mono); font-size:0.72rem; color:var(--chalk-dim-2); }
+  .info-panel-top p{ font-size:0.94rem; color:var(--chalk-dim); line-height:1.6; margin:0; }
+  .info-panel-top strong{ color:var(--orange); }
+
+  .flex-sub{ font-size:0.9rem; color:var(--chalk-dim); line-height:1.6; margin:0 0 18px; }
+  .flex-split{ display:flex; flex-direction:column; gap:12px; }
+  .flex-split div{ display:flex; align-items:baseline; gap:12px; border-top:1px solid var(--steel-line); padding-top:12px; }
+  .flex-split .num{ font-family:var(--mono); font-weight:700; font-size:1.05rem; color:var(--orange); flex-shrink:0; }
+  .flex-split .lab{ font-size:0.88rem; color:var(--chalk-dim); }
+
+  .benefits-row{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-bottom:26px;
+  }
+  .benefit{
+    display:flex; align-items:center; gap:12px; background:var(--panel); border:1px solid var(--steel-line);
+    padding:16px 16px; font-size:0.88rem; color:var(--chalk); font-family:var(--head); font-weight:500;
+  }
+  .benefit .ic{ font-size:1.3rem; flex-shrink:0; }
+
+  .bundle-cta-banner{
+    border:1px solid var(--orange); background:rgba(226,102,28,0.08);
+    padding:clamp(24px,4vw,34px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .bcb-main h3{ font-family:var(--display); font-size:2rem; text-transform:uppercase; color:var(--chalk); margin:0 0 6px; line-height:1; }
+  .bcb-main p{ margin:0; font-size:0.92rem; color:var(--chalk-dim); }
+  .bcb-main .deadline{ color:var(--orange); font-weight:600; margin-top:4px; }
+  .bcb-chips{ display:flex; flex-direction:column; gap:8px; }
+  .info-chip{ font-family:var(--mono); font-size:0.74rem; color:var(--chalk-dim); white-space:nowrap; }
+  .bcb-btn{ flex-shrink:0; }
+
+  .macro-disclaimer{ text-align:center; font-family:var(--mono); font-size:0.72rem; letter-spacing:0.06em; color:var(--chalk-dim-2); margin:26px 0 0; }
+
+  @media (max-width:700px){
+    .bundle-cta-banner{ flex-direction:column; align-items:flex-start; }
+    .bcb-btn{ width:100%; justify-content:center; }
+  }
 
   /* ---------------- order ---------------- */
   .order{ background:var(--black); }
@@ -300,6 +394,22 @@
   .footer-meta{ font-family:var(--mono); font-size:0.72rem; color:var(--chalk-dim-2); text-align:right; line-height:1.7; }
   .footer-meta strong{ color:var(--orange); }
 
+  @media (max-width:900px){
+    .nav-links{
+      display:none;
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; align-items:flex-start; gap:0;
+      background:var(--charcoal); border-bottom:1px solid var(--steel-line);
+      padding:8px clamp(20px,5vw,56px) 18px;
+    }
+    .nav-links.open{ display:flex; }
+    .nav-links a{ width:100%; padding:13px 0; border-bottom:1px solid var(--steel-line); }
+    .nav-links a:last-child{ border-bottom:none; }
+    .nav-toggle{ display:flex; }
+    .nav-cta{ display:none; }
+    .lang-toggle{ order:1; }
+  }
+
   @media (max-width:820px){
     .order-grid{ grid-template-columns:1fr; }
     .field-row{ grid-template-columns:1fr; }
@@ -321,12 +431,24 @@
       <img src="images/logo.png" alt="Omar's Healthy Food LLC logo">
       <span class="brand-text">OMAR'S HEALTHY FOOD<small>EST. 2024 · SANTA MARIA, CA</small></span>
     </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#how" data-i18n="navHow">How It Works</a></li>
+      <li><a href="#menu" data-i18n="navMenu">Menu</a></li>
+      <li><a href="#treats" data-i18n="navTreats">Treats</a></li>
+      <li><a href="#build" data-i18n="navBuild">Build Your Own</a></li>
+      <li><a href="#bundles" data-i18n="navBundles">Bundles</a></li>
+      <li><a href="#order" data-i18n="navOrder">Order</a></li>
+    </ul>
+
     <div class="nav-right">
       <div class="lang-toggle" role="group" aria-label="Language">
         <button type="button" data-lang="en" class="active">EN</button>
         <button type="button" data-lang="es">ES</button>
       </div>
       <a class="nav-cta" href="#order" data-i18n="navCta">Start My Plan</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" id="navToggleIcon"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </div>
 </header>
@@ -481,7 +603,33 @@
   </div>
 </section>
 
-<section class="build">
+<section class="treats" id="treats">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker" data-i18n="treatsKicker">Protein Treats</span>
+      <h2 class="section-h" data-i18n="treatsH">Dessert, Still On Macros</h2>
+      <p class="section-p" data-i18n="treatsP">Yes — even the sweet stuff gets logged.</p>
+    </div>
+
+    <div class="treat-card">
+      <div class="treat-photo">
+        <img src="images/cheesecake.jpg" alt="PB Oreo Protein Cheesecake">
+      </div>
+      <div class="treat-facts">
+        <h3 data-i18n="treatName">PB Oreo Protein Cheesecake 🍪🥜</h3>
+        <ul class="facts-list">
+          <li><span class="num">315</span><span class="lab" data-i18n="factCal">Calories</span></li>
+          <li><span class="num">30g</span><span class="lab" data-i18n="factPro">Protein</span></li>
+          <li><span class="num">33g</span><span class="lab" data-i18n="factCarb">Carbs</span></li>
+          <li><span class="num">6g</span><span class="lab" data-i18n="factFat">Fat</span></li>
+        </ul>
+        <div class="allergen-flag">⚠️ <span data-i18n="treatAllergen">Contains Peanuts</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="build" id="build">
   <div class="wrap">
     <div class="section-head">
       <span class="kicker" data-i18n="buildKicker">Build Your Own</span>
@@ -528,30 +676,86 @@
   </div>
 </section>
 
-<section class="bundles">
+<section class="bundles" id="bundles">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker" data-i18n="bundleKicker">Bundle Deals</span>
-      <h2 class="section-h" data-i18n="bundleH">Plan A Week, Not A Meal</h2>
-      <p class="section-p" data-i18n="bundleP">Set up a standing order around your training week and skip the day-to-day decision fatigue. Ask us for current bundle pricing when you reach out.</p>
+      <span class="kicker" data-i18n="bundleKicker">Bundle &amp; Save</span>
+      <h2 class="section-h" data-i18n="bundleH">Bundle Deals</h2>
+      <p class="section-p" data-i18n="bundleP">More meals. More value. Stay consistent.</p>
     </div>
-    <div class="bundle-grid">
-      <div class="bundle-card">
-        <h3 data-i18n="bundle1H">5-Meal Weekly Bundle</h3>
-        <p data-i18n="bundle1P">One meal a day, five days a week — built around a single goal, so your weekdays are covered without the guesswork.</p>
-        <a href="#order" data-i18n="bundleCta">Ask About This Bundle</a>
+
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-eyebrow" data-i18n="tierOrder">Order</div>
+        <div class="tier-num">10</div>
+        <div class="tier-unit" data-i18n="tierMeals">Meals</div>
+        <div class="tier-pill">5% <span data-i18n="tierOff">Off</span></div>
+        <p class="tier-fine" data-i18n="tierFine">Discount applies to standard meals only</p>
       </div>
-      <div class="bundle-card featured" data-tag="Popular">
-        <h3 data-i18n="bundle2H">10-Meal Bi-Weekly Bundle</h3>
-        <p data-i18n="bundle2P">Ten meals scheduled across two weeks, mixed from the full menu — good for busy, back-to-back schedules.</p>
-        <a href="#order" data-i18n="bundleCta">Ask About This Bundle</a>
+      <div class="tier-card featured">
+        <div class="tier-eyebrow" data-i18n="tierOrder">Order</div>
+        <div class="tier-num">15</div>
+        <div class="tier-unit" data-i18n="tierMeals">Meals</div>
+        <div class="tier-pill">8% <span data-i18n="tierOff">Off</span></div>
+        <p class="tier-fine" data-i18n="tierFine">Discount applies to standard meals only</p>
       </div>
-      <div class="bundle-card">
-        <h3 data-i18n="bundle3H">Custom Goal Bundle</h3>
-        <p data-i18n="bundle3P">Tell us your goal and timeline — cutting, bulking, event prep — and we'll put together a bundle built specifically around it.</p>
-        <a href="#order" data-i18n="bundleCta">Ask About This Bundle</a>
+      <div class="tier-card">
+        <div class="tier-eyebrow" data-i18n="tierOrder">Order</div>
+        <div class="tier-num">20</div>
+        <div class="tier-unit" data-i18n="tierMeals">Meals</div>
+        <div class="tier-pill">10% <span data-i18n="tierOff">Off</span></div>
+        <p class="tier-fine" data-i18n="tierFine">Discount applies to standard meals only</p>
       </div>
     </div>
+
+    <div class="panel-grid">
+      <div class="info-panel">
+        <h3 data-i18n="premiumH">Premium Meals</h3>
+        <div class="info-panel-top">
+          <div class="price-block">
+            <span class="price-lab" data-i18n="startingAt">Starting At</span>
+            <span class="price-num">$17+</span>
+            <span class="price-note" data-i18n="variesWeekly">(varies weekly)</span>
+          </div>
+          <p data-i18n="premiumP">Order 6+ premium meals in your bundle &amp; get <strong>10% off your entire order.</strong></p>
+        </div>
+      </div>
+      <div class="info-panel">
+        <h3 data-i18n="flexH">Flexible Meal Plans</h3>
+        <p class="flex-sub" data-i18n="flexSub">Use your meals your way! You don't have to use all your meals in one week.</p>
+        <div class="flex-split">
+          <div><span class="num">20</span><span class="lab" data-i18n="flex1">Meals — 5 per week</span></div>
+          <div><span class="num">20</span><span class="lab" data-i18n="flex2">Meals — split 10 &amp; 10</span></div>
+          <div><span class="num">40</span><span class="lab" data-i18n="flex3">Meals — spread across the month</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="benefits-row">
+      <div class="benefit"><span class="ic">💪</span><span data-i18n="benefit1">Save more with every bundle</span></div>
+      <div class="benefit"><span class="ic">⏱️</span><span data-i18n="benefit2">Save time, eat clean</span></div>
+      <div class="benefit"><span class="ic">📅</span><span data-i18n="benefit3">Stay consistent</span></div>
+      <div class="benefit"><span class="ic">🔥</span><span data-i18n="benefit4">Fuel your body, reach your goals</span></div>
+    </div>
+
+    <div class="bundle-cta-banner">
+      <div class="bcb-main">
+        <h3 data-i18n="dmH">DM To Order!</h3>
+        <p data-i18n="dmP1">Limited prep slots available.</p>
+        <p class="deadline" data-i18n="dmP2">All orders must be placed by Sunday afternoon!</p>
+      </div>
+      <div class="bcb-chips">
+        <span class="info-chip" data-i18n="chip1">✓ Payment upfront</span>
+        <span class="info-chip" data-i18n="chip2">✓ Pre-orders only</span>
+        <span class="info-chip" data-i18n="chip3">✓ No last-minute changes</span>
+      </div>
+      <a class="btn-primary bcb-btn" href="#order">
+        <span data-i18n="bundleCta">Start Your Bundle</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <p class="macro-disclaimer" data-i18n="macroDisclaimer">★ Macros vary based on sides. ★</p>
   </div>
 </section>
 
@@ -657,6 +861,12 @@
   // ---------------- i18n ----------------
   const dict = {
     navCta: {en:"Start My Plan", es:"Empieza Tu Plan"},
+    navHow: {en:"How It Works", es:"Cómo Funciona"},
+    navMenu: {en:"Menu", es:"Menú"},
+    navTreats: {en:"Treats", es:"Postres"},
+    navBuild: {en:"Build Your Own", es:"Arma el Tuyo"},
+    navBundles: {en:"Bundles", es:"Paquetes"},
+    navOrder: {en:"Order", es:"Ordenar"},
     chipPermit: {en:"Permitted Home Kitchen · Santa Maria, CA", es:"Cocina Casera Permitida · Santa Maria, CA"},
     chipNotice: {en:"2-Day Advance Notice", es:"Aviso de 2 Días"},
     chipSpanish: {en:"Hablamos Español", es:"Hablamos Español"},
@@ -718,16 +928,43 @@
     noteVal2: {en:"Available, +$6", es:"Disponible, +$6"},
     noteLabel3: {en:"Payments:", es:"Pagos:"},
     noteVal3: {en:"Zelle, Venmo, Cash", es:"Zelle, Venmo, Efectivo"},
-    bundleKicker: {en:"Bundle Deals", es:"Paquetes"},
-    bundleH: {en:"Plan A Week, Not A Meal", es:"Planea Una Semana, No Una Comida"},
-    bundleP: {en:"Set up a standing order around your training week and skip the day-to-day decision fatigue. Ask us for current bundle pricing when you reach out.", es:"Establece un pedido fijo según tu semana de entrenamiento y evita decidir cada día. Pregúntanos los precios actuales de los paquetes al contactarnos."},
-    bundle1H: {en:"5-Meal Weekly Bundle", es:"Paquete Semanal de 5 Comidas"},
-    bundle1P: {en:"One meal a day, five days a week — built around a single goal, so your weekdays are covered without the guesswork.", es:"Una comida al día, cinco días a la semana — construido en torno a una sola meta, para cubrir tu semana sin adivinar."},
-    bundle2H: {en:"10-Meal Bi-Weekly Bundle", es:"Paquete Quincenal de 10 Comidas"},
-    bundle2P: {en:"Ten meals scheduled across two weeks, mixed from the full menu — good for busy, back-to-back schedules.", es:"Diez comidas programadas en dos semanas, mezcladas del menú completo — ideal para horarios ocupados."},
-    bundle3H: {en:"Custom Goal Bundle", es:"Paquete Personalizado"},
-    bundle3P: {en:"Tell us your goal and timeline — cutting, bulking, event prep — and we'll put together a bundle built specifically around it.", es:"Dinos tu meta y tiempo — definición, volumen, preparación para eventos — y armaremos un paquete específico para ti."},
-    bundleCta: {en:"Ask About This Bundle", es:"Pregunta Sobre Este Paquete"},
+    treatsKicker: {en:"Protein Treats", es:"Postres Proteicos"},
+    treatsH: {en:"Dessert, Still On Macros", es:"Postre, Aún Dentro de Tus Macros"},
+    treatsP: {en:"Yes — even the sweet stuff gets logged.", es:"Sí — hasta lo dulce se registra."},
+    treatName: {en:"PB Oreo Protein Cheesecake 🍪🥜", es:"Pastel de Queso Proteico de Crema de Cacahuate y Oreo 🍪🥜"},
+    factCal: {en:"Calories", es:"Calorías"},
+    factPro: {en:"Protein", es:"Proteína"},
+    factCarb: {en:"Carbs", es:"Carbohidratos"},
+    factFat: {en:"Fat", es:"Grasa"},
+    treatAllergen: {en:"Contains Peanuts", es:"Contiene Cacahuate"},
+    bundleKicker: {en:"Bundle &amp; Save", es:"Paquete y Ahorra"},
+    bundleH: {en:"Bundle Deals", es:"Ofertas en Paquetes"},
+    bundleP: {en:"More meals. More value. Stay consistent.", es:"Más comidas. Más valor. Mantente consistente."},
+    tierOrder: {en:"Order", es:"Ordena"},
+    tierMeals: {en:"Meals", es:"Comidas"},
+    tierOff: {en:"Off", es:"de Descuento"},
+    tierFine: {en:"Discount applies to standard meals only", es:"Descuento aplica solo a comidas estándar"},
+    premiumH: {en:"Premium Meals", es:"Comidas Premium"},
+    startingAt: {en:"Starting At", es:"Desde"},
+    variesWeekly: {en:"(varies weekly)", es:"(varía cada semana)"},
+    premiumP: {en:'Order 6+ premium meals in your bundle &amp; get <strong>10% off your entire order.</strong>', es:'Ordena 6+ comidas premium en tu paquete y <strong>recibe 10% de descuento en toda tu orden.</strong>'},
+    flexH: {en:"Flexible Meal Plans", es:"Planes Flexibles"},
+    flexSub: {en:"Use your meals your way! You don't have to use all your meals in one week.", es:"¡Usa tus comidas a tu manera! No tienes que usar todas tus comidas en una semana."},
+    flex1: {en:"Meals — 5 per week", es:"Comidas — 5 por semana"},
+    flex2: {en:"Meals — split 10 &amp; 10", es:"Comidas — divide 10 y 10"},
+    flex3: {en:"Meals — spread across the month", es:"Comidas — distribuidas durante el mes"},
+    benefit1: {en:"Save more with every bundle", es:"Ahorra más con cada paquete"},
+    benefit2: {en:"Save time, eat clean", es:"Ahorra tiempo, come limpio"},
+    benefit3: {en:"Stay consistent", es:"Mantente consistente"},
+    benefit4: {en:"Fuel your body, reach your goals", es:"Alimenta tu cuerpo, alcanza tus metas"},
+    dmH: {en:"DM To Order!", es:"¡Ordena por Mensaje (DM)!"},
+    dmP1: {en:"Limited prep slots available.", es:"Espacios limitados · sujeto a disponibilidad"},
+    dmP2: {en:"All orders must be placed by Sunday afternoon!", es:"Todos los pedidos deben hacerse antes del domingo por la tarde"},
+    chip1: {en:"✓ Payment upfront", es:"✓ Pago por adelantado"},
+    chip2: {en:"✓ Pre-orders only", es:"✓ Sólo pedidos anticipados"},
+    chip3: {en:"✓ No last-minute changes", es:"✓ No cambios de último momento"},
+    bundleCta: {en:"Start Your Bundle", es:"Empieza Tu Paquete"},
+    macroDisclaimer: {en:"★ Macros vary based on sides. ★", es:"★ Macros varían según los acompañamientos. ★"},
     orderKicker: {en:"Start Your Plan", es:"Empieza Tu Plan"},
     orderH: {en:"Tell Us What You Need", es:"Dinos Qué Necesitas"},
     noticeText: {en:"<strong>All orders require at least 2 days' advance notice.</strong> This gives us time to prep your meals fresh and exactly to your plan.", es:"<strong>Todos los pedidos requieren al menos 2 días de aviso.</strong> Esto nos da tiempo para preparar tus comidas frescas y exactas a tu plan."},
@@ -783,6 +1020,22 @@
   document.querySelectorAll('.lang-toggle button').forEach(btn=>{
     btn.addEventListener('click', ()=> applyLang(btn.getAttribute('data-lang')));
   });
+
+  // ---------------- mobile nav toggle ----------------
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  if(navToggle && navLinks){
+    navToggle.addEventListener('click', ()=>{
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(link=>{
+      link.addEventListener('click', ()=>{
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   // ---------------- 2-day minimum date ----------------
   const dateInput = document.getElementById('f-date');
