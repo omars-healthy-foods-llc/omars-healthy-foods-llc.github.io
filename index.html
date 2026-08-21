@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar's Healthy Food LLC — Performance Meals, Santa Maria CA</title>
+<meta name="description" content="Macro-built meals prepped one-on-one around your goals. Permitted home kitchen in Santa Maria, CA. Pickup &amp; delivery. Se habla español.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --black:      #0A0A0B;
+    --charcoal:   #17181B;
+    --panel:      #1D1F22;
+    --panel-2:    #232529;
+    --steel:      #3A3D42;
+    --steel-line: rgba(237,234,227,0.14);
+    --steel-line-strong: rgba(237,234,227,0.26);
+    --orange:     #E2661C;
+    --orange-hot: #FF7E2E;
+    --chalk:      #EDEAE3;
+    --chalk-dim:  rgba(237,234,227,0.68);
+    --chalk-dim-2:rgba(237,234,227,0.48);
+
+    --display: 'Bebas Neue', 'Oswald', sans-serif;
+    --head:    'Oswald', sans-serif;
+    --body:    'Work Sans', sans-serif;
+    --mono:    'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--black);
+    color:var(--chalk);
+    font-family:var(--body);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  img{ display:block; max-width:100%; }
+
+  .wrap{
+    max-width:1160px;
+    margin:0 auto;
+    padding:0 clamp(20px,5vw,56px);
+  }
+
+  ::selection{ background:var(--orange); color:var(--black); }
+
+  /* ---------------- header ---------------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(10,10,11,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--steel-line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px clamp(20px,5vw,56px);
+    gap:16px;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .brand img{ height:44px; width:auto; }
+  .brand-text{ font-family:var(--head); font-weight:600; font-size:0.98rem; letter-spacing:0.02em; color:var(--chalk); line-height:1.15; }
+  .brand-text small{ display:block; font-family:var(--mono); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--orange); margin-top:2px; }
+
+  .nav-right{ display:flex; align-items:center; gap:14px; }
+  .lang-toggle{
+    display:flex; border:1px solid var(--steel-line-strong); border-radius:20px; overflow:hidden;
+    font-family:var(--mono); font-size:0.68rem; letter-spacing:0.05em;
+  }
+  .lang-toggle button{
+    background:transparent; border:none; color:var(--chalk-dim); padding:7px 12px;
+    cursor:pointer; font-family:inherit; font-size:inherit; letter-spacing:inherit;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-toggle button.active{ background:var(--orange); color:var(--black); font-weight:700; }
+
+  .nav-cta{
+    font-family:var(--head); font-weight:600; font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase;
+    text-decoration:none; background:var(--orange); color:var(--black);
+    padding:10px 18px; border-radius:2px; white-space:nowrap;
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .nav-cta:hover{ background:var(--orange-hot); transform:translateY(-1px); }
+
+  /* ---------------- hero ---------------- */
+  .hero{
+    position:relative;
+    padding:clamp(76px,14vw,140px) 0 clamp(56px,9vw,92px);
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(10,10,11,0.55) 0%, rgba(10,10,11,0.88) 60%, var(--black) 100%),
+      linear-gradient(120deg, rgba(226,102,28,0.18), rgba(10,10,11,0.2)),
+      url('images/salmon.jpg') center 30% / cover no-repeat;
+  }
+  .hero-inner{ position:relative; z-index:2; max-width:760px; }
+  .badge-row{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:26px; }
+  .chip{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:var(--mono); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;
+    border:1px solid var(--steel-line-strong); color:var(--chalk-dim);
+    padding:7px 12px; border-radius:20px; background:rgba(23,24,27,0.6);
+  }
+  .chip .dot{ width:6px; height:6px; border-radius:50%; background:var(--orange); }
+
+  .eyebrow{
+    font-family:var(--head); font-weight:600; font-size:0.85rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--orange); margin:0 0 14px;
+  }
+  h1.hero-h{
+    font-family:var(--display); font-weight:400;
+    font-size:clamp(3.2rem,9vw,6.2rem);
+    line-height:0.92; letter-spacing:0.01em;
+    margin:0 0 22px; color:var(--chalk);
+    text-transform:uppercase;
+  }
+  h1.hero-h span{ color:var(--orange); }
+  .hero-sub{
+    font-size:1.08rem; line-height:1.65; color:var(--chalk-dim);
+    max-width:52ch; margin:0 0 34px;
+  }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+  .btn-primary{
+    font-family:var(--head); font-weight:600; font-size:0.88rem; letter-spacing:0.05em; text-transform:uppercase;
+    text-decoration:none; background:var(--orange); color:var(--black);
+    padding:17px 30px; border-radius:2px; display:inline-flex; align-items:center; gap:10px;
+    transition:background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-primary:hover{ background:var(--orange-hot); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(226,102,28,0.55); }
+  .btn-primary svg{ width:14px; height:14px; }
+  .btn-ghost{
+    font-family:var(--head); font-weight:600; font-size:0.88rem; letter-spacing:0.05em; text-transform:uppercase;
+    text-decoration:none; color:var(--chalk); border-bottom:1px solid var(--steel-line-strong);
+    padding-bottom:4px; transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-ghost:hover{ color:var(--orange); border-color:var(--orange); }
+
+  /* ---------------- permit / trust strip ---------------- */
+  .trust{ background:var(--charcoal); border-top:1px solid var(--steel-line); border-bottom:1px solid var(--steel-line); }
+  .trust-inner{
+    padding:clamp(30px,5vw,42px) 0;
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:22px 40px; align-items:start;
+  }
+  .trust-item .k{ font-family:var(--mono); font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--orange); margin-bottom:7px; }
+  .trust-item .v{ font-family:var(--head); font-weight:500; font-size:1rem; color:var(--chalk); line-height:1.4; }
+  .trust-item .v.mono{ font-family:var(--mono); font-weight:600; }
+
+  /* ---------------- section shells ---------------- */
+  section{ padding:clamp(64px,10vw,104px) 0; }
+  .section-head{ max-width:640px; margin-bottom:clamp(36px,6vw,56px); }
+  .kicker{
+    font-family:var(--mono); font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--orange); margin-bottom:14px; display:block;
+  }
+  h2.section-h{
+    font-family:var(--display); font-weight:400; text-transform:uppercase;
+    font-size:clamp(2.3rem,5vw,3.4rem); line-height:0.98; margin:0 0 16px; color:var(--chalk);
+  }
+  .section-p{ color:var(--chalk-dim); line-height:1.7; font-size:1.02rem; }
+
+  /* ---------------- how it works ---------------- */
+  .how{ background:var(--black); }
+  .how-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px;
+    background:var(--steel-line); border:1px solid var(--steel-line);
+  }
+  .how-step{ background:var(--panel); padding:32px 26px; }
+  .how-step .n{ font-family:var(--display); font-size:2.6rem; color:var(--orange); line-height:1; margin-bottom:14px; }
+  .how-step h3{ font-family:var(--head); font-weight:600; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em; margin:0 0 10px; color:var(--chalk); }
+  .how-step p{ font-size:0.92rem; color:var(--chalk-dim); line-height:1.6; margin:0; }
+
+  /* ---------------- menu ---------------- */
+  .menu{ background:var(--charcoal); border-top:1px solid var(--steel-line); border-bottom:1px solid var(--steel-line); }
+  .menu-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px; }
+  .meal-card{
+    background:var(--panel); border:1px solid var(--steel-line);
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:border-color 0.25s ease, transform 0.25s ease;
+  }
+  .meal-card:hover{ border-color:var(--orange); transform:translateY(-3px); }
+  .meal-photo{ position:relative; aspect-ratio:4/3; overflow:hidden; }
+  .meal-photo img{ width:100%; height:100%; object-fit:cover; }
+  .meal-price{
+    position:absolute; top:12px; right:12px;
+    font-family:var(--mono); font-weight:700; font-size:0.85rem;
+    background:var(--orange); color:var(--black); padding:5px 10px; border-radius:2px;
+  }
+  .meal-body{ padding:22px 22px 24px; flex:1; display:flex; flex-direction:column; }
+  .meal-body h3{ font-family:var(--head); font-weight:600; font-size:1.15rem; text-transform:uppercase; letter-spacing:0.01em; margin:0 0 14px; color:var(--chalk); }
+  .macros{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:auto; }
+  .macro{
+    text-align:center; border:1px solid var(--steel-line); padding:9px 4px; border-radius:2px; background:var(--panel-2);
+  }
+  .macro .num{ font-family:var(--mono); font-weight:700; font-size:0.86rem; color:var(--orange); display:block; }
+  .macro .lab{ font-family:var(--mono); font-size:0.56rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--chalk-dim-2); display:block; margin-top:3px; }
+
+  /* ---------------- build your bowl ---------------- */
+  .build{ background:var(--black); }
+  .build-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--steel-line); border:1px solid var(--steel-line); margin-top:8px; }
+  .build-col{ background:var(--panel); padding:28px 26px; }
+  .build-col h3{ font-family:var(--head); font-weight:600; font-size:0.82rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--orange); margin:0 0 18px; }
+  .build-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; }
+  .build-col li{ font-size:0.95rem; color:var(--chalk); display:flex; align-items:baseline; gap:9px; }
+  .build-col li::before{ content:"—"; color:var(--steel); flex-shrink:0; }
+  .build-note{
+    margin-top:26px; display:flex; flex-wrap:wrap; gap:12px 28px; align-items:center;
+    font-family:var(--mono); font-size:0.78rem; color:var(--chalk-dim);
+  }
+  .build-note strong{ color:var(--orange); }
+
+  /* ---------------- bundles ---------------- */
+  .bundles{ background:var(--charcoal); border-top:1px solid var(--steel-line); border-bottom:1px solid var(--steel-line); }
+  .bundle-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; }
+  .bundle-card{
+    background:var(--panel); border:1px solid var(--steel-line); padding:30px 26px;
+    display:flex; flex-direction:column; transition:border-color 0.25s ease;
+  }
+  .bundle-card.featured{ border-color:var(--orange); position:relative; }
+  .bundle-card.featured::before{
+    content:attr(data-tag); position:absolute; top:-1px; right:-1px;
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase;
+    background:var(--orange); color:var(--black); padding:5px 10px;
+  }
+  .bundle-card h3{ font-family:var(--head); font-weight:600; font-size:1.15rem; text-transform:uppercase; margin:0 0 10px; color:var(--chalk); }
+  .bundle-card p{ font-size:0.92rem; color:var(--chalk-dim); line-height:1.6; margin:0 0 20px; flex:1; }
+  .bundle-card a{ font-family:var(--mono); font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--orange); text-decoration:none; border-bottom:1px solid var(--orange); align-self:flex-start; padding-bottom:2px; }
+
+  /* ---------------- order ---------------- */
+  .order{ background:var(--black); }
+  .order-grid{ display:grid; grid-template-columns:0.95fr 1.05fr; gap:clamp(32px,6vw,64px); align-items:start; }
+  .notice-banner{
+    display:flex; align-items:flex-start; gap:12px;
+    border:1px solid var(--orange); background:rgba(226,102,28,0.08);
+    padding:16px 18px; border-radius:2px; margin-bottom:30px;
+  }
+  .notice-banner svg{ width:20px; height:20px; color:var(--orange); flex-shrink:0; margin-top:2px; }
+  .notice-banner p{ margin:0; font-size:0.9rem; color:var(--chalk); line-height:1.55; }
+  .notice-banner strong{ color:var(--orange); }
+
+  .order-info-list{ list-style:none; margin:0 0 30px; padding:0; display:flex; flex-direction:column; gap:16px; }
+  .order-info-list li{ display:flex; gap:14px; font-size:0.95rem; color:var(--chalk-dim); align-items:flex-start; }
+  .order-info-list .dot{ width:7px; height:7px; border-radius:50%; background:var(--orange); margin-top:8px; flex-shrink:0; }
+  .order-info-list strong{ color:var(--chalk); }
+
+  form.order-form{
+    background:var(--panel); border:1px solid var(--steel-line); padding:clamp(26px,4vw,36px);
+  }
+  .field{ margin-bottom:20px; }
+  .field label{
+    display:block; font-family:var(--mono); font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--chalk-dim); margin-bottom:8px;
+  }
+  .field input[type="text"],
+  .field input[type="tel"],
+  .field input[type="email"],
+  .field input[type="date"],
+  .field select,
+  .field textarea{
+    width:100%; background:var(--black); border:1px solid var(--steel-line-strong); color:var(--chalk);
+    font-family:var(--body); font-size:0.95rem; padding:12px 13px; border-radius:2px;
+    outline:none; transition:border-color 0.2s ease;
+  }
+  .field textarea{ resize:vertical; min-height:84px; }
+  .field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--orange); }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .radio-row{ display:flex; gap:18px; flex-wrap:wrap; }
+  .radio-opt{ display:flex; align-items:center; gap:8px; font-size:0.9rem; color:var(--chalk); }
+  .radio-opt input{ accent-color:var(--orange); width:16px; height:16px; }
+  .delivery-note{ font-size:0.78rem; color:var(--chalk-dim-2); margin-top:8px; display:none; }
+  .delivery-note.show{ display:block; }
+
+  .submit-btn{
+    width:100%; font-family:var(--head); font-weight:600; font-size:0.92rem; letter-spacing:0.05em; text-transform:uppercase;
+    background:var(--orange); color:var(--black); border:none; padding:16px; border-radius:2px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .submit-btn:hover{ background:var(--orange-hot); transform:translateY(-1px); }
+  .submit-btn svg{ width:15px; height:15px; }
+
+  .payment-note{
+    margin-top:16px; font-size:0.78rem; color:var(--chalk-dim-2); text-align:center; line-height:1.6;
+  }
+
+  /* ---------------- footer ---------------- */
+  footer{ border-top:1px solid var(--steel-line); padding:40px 0; }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;
+  }
+  .footer-brand{ display:flex; align-items:center; gap:12px; }
+  .footer-brand img{ height:38px; }
+  .footer-brand .ft{ font-family:var(--head); font-weight:600; font-size:0.9rem; color:var(--chalk); }
+  .footer-brand .ft small{ display:block; font-family:var(--mono); font-size:0.62rem; color:var(--chalk-dim-2); margin-top:2px; }
+  .footer-meta{ font-family:var(--mono); font-size:0.72rem; color:var(--chalk-dim-2); text-align:right; line-height:1.7; }
+  .footer-meta strong{ color:var(--orange); }
+
+  @media (max-width:820px){
+    .order-grid{ grid-template-columns:1fr; }
+    .field-row{ grid-template-columns:1fr; }
+  }
+  @media (max-width:600px){
+    .footer-inner{ flex-direction:column; align-items:flex-start; }
+    .footer-meta{ text-align:left; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a class="brand" href="#top">
+      <img src="images/logo.png" alt="Omar's Healthy Food LLC logo">
+      <span class="brand-text">OMAR'S HEALTHY FOOD<small>EST. 2024 · SANTA MARIA, CA</small></span>
+    </a>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="active">EN</button>
+        <button type="button" data-lang="es">ES</button>
+      </div>
+      <a class="nav-cta" href="#order" data-i18n="navCta">Start My Plan</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="badge-row">
+      <span class="chip"><span class="dot"></span> <span data-i18n="chipPermit">Permitted Home Kitchen · Santa Maria, CA</span></span>
+      <span class="chip"><span class="dot"></span> <span data-i18n="chipNotice">2-Day Advance Notice</span></span>
+      <span class="chip"><span class="dot"></span> <span data-i18n="chipSpanish">Hablamos Español</span></span>
+    </div>
+    <p class="eyebrow" data-i18n="heroEyebrow">Performance Nutrition, Made Personally</p>
+    <h1 class="hero-h" data-i18n="heroH">FOOD BUILT<br>AROUND <span>YOUR GOALS</span></h1>
+    <p class="hero-sub" data-i18n="heroSub">Every plan starts with a conversation — your goals, your restrictions, your schedule. Then we prep it fresh, one-on-one, in a permitted home kitchen. No templates. No guesswork. Just food that works as hard as you do.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#order">
+        <span data-i18n="heroBtn1">Start My Plan</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn-ghost" href="#menu" data-i18n="heroBtn2">See the Menu</a>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-item">
+      <div class="k" data-i18n="trustK1">Issuing Authority</div>
+      <div class="v">Santa Barbara County Public Health<br>Environmental Health Services</div>
+    </div>
+    <div class="trust-item">
+      <div class="k" data-i18n="trustK2">Health Permit No.</div>
+      <div class="v mono">EH-FDP-24-000743</div>
+    </div>
+    <div class="trust-item">
+      <div class="k" data-i18n="trustK3">Operation Type</div>
+      <div class="v">1610 — Microenterprise Home<br>Kitchen Operation</div>
+    </div>
+    <div class="trust-item">
+      <div class="k" data-i18n="trustK4">Location</div>
+      <div class="v" data-i18n="trustV4">Santa Maria, California, USA</div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker" data-i18n="howKicker">How It Works</span>
+      <h2 class="section-h" data-i18n="howH">One-On-One, Every Time</h2>
+      <p class="section-p" data-i18n="howP">We don't run a fixed menu at you. We build around what you tell us — your goal, your restrictions, your timeline.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="n">01</div>
+        <h3 data-i18n="how1H">Tell Us Your Goals</h3>
+        <p data-i18n="how1P">Cutting, bulking, maintaining, or just eating better — plus any allergies or diet restrictions we need to know.</p>
+      </div>
+      <div class="how-step">
+        <div class="n">02</div>
+        <h3 data-i18n="how2H">We Build Your Plan</h3>
+        <p data-i18n="how2P">Portions, macros, and sauces adjusted to what you actually need — not a one-size-fits-all bowl.</p>
+      </div>
+      <div class="how-step">
+        <div class="n">03</div>
+        <h3 data-i18n="how3H">Fresh, Small-Batch Prep</h3>
+        <p data-i18n="how3P">Made to order in a permitted home kitchen — nothing mass-produced or sitting in a warehouse.</p>
+      </div>
+      <div class="how-step">
+        <div class="n">04</div>
+        <h3 data-i18n="how4H">Pickup or Delivery</h3>
+        <p data-i18n="how4P">Pick up in Santa Maria, or add delivery. Orders need at least 2 days' notice to prep right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker" data-i18n="menuKicker">The Menu</span>
+      <h2 class="section-h" data-i18n="menuH">Macros On The Label</h2>
+      <p class="section-p" data-i18n="menuP">Every plate is logged — calories, carbs, fat, and protein — so you always know exactly what you're fueling with.</p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="meal-card">
+        <div class="meal-photo"><img src="images/shrimp.jpg" alt="Summer Shrimp Bowl"><span class="meal-price">$16</span></div>
+        <div class="meal-body">
+          <h3 data-i18n="meal1">Summer Shrimp Bowl</h3>
+          <div class="macros">
+            <div class="macro"><span class="num">243</span><span class="lab" data-i18n="labCal">Cal</span></div>
+            <div class="macro"><span class="num">36.3g</span><span class="lab" data-i18n="labCarb">Carbs</span></div>
+            <div class="macro"><span class="num">3.7g</span><span class="lab" data-i18n="labFat">Fat</span></div>
+            <div class="macro"><span class="num">15.1g</span><span class="lab" data-i18n="labPro">Protein</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-photo"><img src="images/teriyaki.jpg" alt="Chicken Teriyaki"><span class="meal-price">$15</span></div>
+        <div class="meal-body">
+          <h3 data-i18n="meal2">Chicken Teriyaki</h3>
+          <div class="macros">
+            <div class="macro"><span class="num">328</span><span class="lab" data-i18n="labCal">Cal</span></div>
+            <div class="macro"><span class="num">29g</span><span class="lab" data-i18n="labCarb">Carbs</span></div>
+            <div class="macro"><span class="num">6g</span><span class="lab" data-i18n="labFat">Fat</span></div>
+            <div class="macro"><span class="num">37.3g</span><span class="lab" data-i18n="labPro">Protein</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-photo"><img src="images/alfredo.jpg" alt="Chicken Alfredo"><span class="meal-price">$18</span></div>
+        <div class="meal-body">
+          <h3 data-i18n="meal3">Chicken Alfredo</h3>
+          <div class="macros">
+            <div class="macro"><span class="num">430</span><span class="lab" data-i18n="labCal">Cal</span></div>
+            <div class="macro"><span class="num">49g</span><span class="lab" data-i18n="labCarb">Carbs</span></div>
+            <div class="macro"><span class="num">10g</span><span class="lab" data-i18n="labFat">Fat</span></div>
+            <div class="macro"><span class="num">38g</span><span class="lab" data-i18n="labPro">Protein</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-photo"><img src="images/salmon.jpg" alt="Salmon Bowl"><span class="meal-price">$18</span></div>
+        <div class="meal-body">
+          <h3 data-i18n="meal4">Salmon Bowl</h3>
+          <div class="macros">
+            <div class="macro"><span class="num">420</span><span class="lab" data-i18n="labCal">Cal</span></div>
+            <div class="macro"><span class="num">41.7g</span><span class="lab" data-i18n="labCarb">Carbs</span></div>
+            <div class="macro"><span class="num">8.8g</span><span class="lab" data-i18n="labFat">Fat</span></div>
+            <div class="macro"><span class="num">41.8g</span><span class="lab" data-i18n="labPro">Protein</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-photo"><img src="images/meatloaf.jpg" alt="Meatloaf and Mashed Potatoes"><span class="meal-price">$18</span></div>
+        <div class="meal-body">
+          <h3 data-i18n="meal5">Meatloaf &amp; Mashed Potatoes</h3>
+          <div class="macros">
+            <div class="macro"><span class="num">520</span><span class="lab" data-i18n="labCal">Cal</span></div>
+            <div class="macro"><span class="num">35g</span><span class="lab" data-i18n="labCarb">Carbs</span></div>
+            <div class="macro"><span class="num">24g</span><span class="lab" data-i18n="labFat">Fat</span></div>
+            <div class="macro"><span class="num">38g</span><span class="lab" data-i18n="labPro">Protein</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="build">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker" data-i18n="buildKicker">Build Your Own</span>
+      <h2 class="section-h" data-i18n="buildH">Mix, Match, Your Way</h2>
+      <p class="section-p" data-i18n="buildP">Because every great meal deserves the perfect match — swap veggies, bases, and sauces to fit your plan.</p>
+    </div>
+
+    <div class="build-grid">
+      <div class="build-col">
+        <h3 data-i18n="buildCol1">Veggie Favorites</h3>
+        <ul>
+          <li data-i18n="veg1">Green Beans</li>
+          <li data-i18n="veg2">Baby Carrots</li>
+          <li data-i18n="veg3">Broccoli Florets</li>
+          <li data-i18n="veg4">Tender Asparagus</li>
+          <li data-i18n="veg5">Garlic Buttered Potatoes</li>
+          <li data-i18n="veg6">Edamame</li>
+          <li data-i18n="veg7">Chilled Cucumber Slices</li>
+        </ul>
+      </div>
+      <div class="build-col">
+        <h3 data-i18n="buildCol2">Healthy Bases</h3>
+        <ul>
+          <li data-i18n="base1">Fluffy White Jasmine Rice</li>
+          <li data-i18n="base2">Savory Cauliflower Rice</li>
+        </ul>
+      </div>
+      <div class="build-col">
+        <h3 data-i18n="buildCol3">Signature Sauces</h3>
+        <ul>
+          <li data-i18n="sauce1">Mom's Homemade Tomatillo Hot Sauce</li>
+          <li data-i18n="sauce2">Sweet Chili Sauce</li>
+          <li data-i18n="sauce3">Baby Ray's Barbecue</li>
+          <li data-i18n="sauce4">Teriyaki Sauce</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="build-note">
+      <span><strong data-i18n="noteLabel1">Pickup:</strong> <span data-i18n="noteVal1">Santa Maria</span></span>
+      <span><strong data-i18n="noteLabel2">Delivery:</strong> <span data-i18n="noteVal2">Available, +$6</span></span>
+      <span><strong data-i18n="noteLabel3">Payments:</strong> <span data-i18n="noteVal3">Zelle, Venmo, Cash</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="bundles">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker" data-i18n="bundleKicker">Bundle Deals</span>
+      <h2 class="section-h" data-i18n="bundleH">Plan A Week, Not A Meal</h2>
+      <p class="section-p" data-i18n="bundleP">Set up a standing order around your training week and skip the day-to-day decision fatigue. Ask us for current bundle pricing when you reach out.</p>
+    </div>
+    <div class="bundle-grid">
+      <div class="bundle-card">
+        <h3 data-i18n="bundle1H">5-Meal Weekly Bundle</h3>
+        <p data-i18n="bundle1P">One meal a day, five days a week — built around a single goal, so your weekdays are covered without the guesswork.</p>
+        <a href="#order" data-i18n="bundleCta">Ask About This Bundle</a>
+      </div>
+      <div class="bundle-card featured" data-tag="Popular">
+        <h3 data-i18n="bundle2H">10-Meal Bi-Weekly Bundle</h3>
+        <p data-i18n="bundle2P">Ten meals scheduled across two weeks, mixed from the full menu — good for busy, back-to-back schedules.</p>
+        <a href="#order" data-i18n="bundleCta">Ask About This Bundle</a>
+      </div>
+      <div class="bundle-card">
+        <h3 data-i18n="bundle3H">Custom Goal Bundle</h3>
+        <p data-i18n="bundle3P">Tell us your goal and timeline — cutting, bulking, event prep — and we'll put together a bundle built specifically around it.</p>
+        <a href="#order" data-i18n="bundleCta">Ask About This Bundle</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="wrap order-grid">
+    <div>
+      <span class="kicker" data-i18n="orderKicker">Start Your Plan</span>
+      <h2 class="section-h" data-i18n="orderH">Tell Us What You Need</h2>
+
+      <div class="notice-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p data-i18n="noticeText"><strong>All orders require at least 2 days' advance notice.</strong> This gives us time to prep your meals fresh and exactly to your plan.</p>
+      </div>
+
+      <ul class="order-info-list">
+        <li><span class="dot"></span><span><strong data-i18n="infoL1S">Goals &amp; restrictions:</strong> <span data-i18n="infoL1">Let us know your fitness goal, any food allergens, and any diet restrictions — every plan is built one-on-one.</span></span></li>
+        <li><span class="dot"></span><span><strong data-i18n="infoL2S">Pickup or delivery:</strong> <span data-i18n="infoL2">Pickup in Santa Maria, or delivery for +$6.</span></span></li>
+        <li><span class="dot"></span><span><strong data-i18n="infoL3S">Payment:</strong> <span data-i18n="infoL3">Zelle, Venmo, or Cash — orders are confirmed once payment is received.</span></span></li>
+        <li><span class="dot"></span><span><strong data-i18n="infoL4S">Questions:</strong> <span data-i18n="infoL4">DM anytime — we speak English and Spanish.</span></span></li>
+      </ul>
+    </div>
+
+    <form class="order-form" id="orderForm">
+      <div class="field">
+        <label for="f-name" data-i18n="fName">Full Name</label>
+        <input type="text" id="f-name" name="name" required>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="f-phone" data-i18n="fPhone">Phone</label>
+          <input type="tel" id="f-phone" name="phone">
+        </div>
+        <div class="field">
+          <label for="f-email" data-i18n="fEmail">Email</label>
+          <input type="email" id="f-email" name="email">
+        </div>
+      </div>
+
+      <div class="field">
+        <label data-i18n="fFulfil">Pickup or Delivery</label>
+        <div class="radio-row">
+          <label class="radio-opt"><input type="radio" name="fulfil" value="Pickup" checked> <span data-i18n="fPickup">Pickup (Santa Maria)</span></label>
+          <label class="radio-opt"><input type="radio" name="fulfil" value="Delivery"> <span data-i18n="fDelivery">Delivery (+$6)</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-date" data-i18n="fDate">Requested Date (2-day minimum notice)</label>
+        <input type="date" id="f-date" name="date" required>
+      </div>
+
+      <div class="field">
+        <label for="f-goal" data-i18n="fGoal">Fitness Goal</label>
+        <select id="f-goal" name="goal">
+          <option data-i18n="goalOpt1">Fat Loss</option>
+          <option data-i18n="goalOpt2">Muscle Gain</option>
+          <option data-i18n="goalOpt3">Maintenance</option>
+          <option data-i18n="goalOpt4">Athletic Performance</option>
+          <option data-i18n="goalOpt5">General Healthy Eating</option>
+          <option data-i18n="goalOpt6">Other / Not Sure Yet</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="f-meals" data-i18n="fMeals">Meals / Bundle Interested In</label>
+        <input type="text" id="f-meals" name="meals" data-i18n-ph="fMealsPh" placeholder="e.g. Salmon Bowl x3, 5-Meal Weekly Bundle">
+      </div>
+
+      <div class="field">
+        <label for="f-allergy" data-i18n="fAllergy">Food Allergens or Diet Restrictions</label>
+        <textarea id="f-allergy" name="allergy" data-i18n-ph="fAllergyPh" placeholder="e.g. shellfish allergy, dairy-free, low-carb"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="f-notes" data-i18n="fNotes">Anything Else We Should Know</label>
+        <textarea id="f-notes" name="notes" data-i18n-ph="fNotesPh" placeholder="Portion sizes, spice level, training schedule, etc."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <span data-i18n="fSubmit">Send My Order Request</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="payment-note" data-i18n="paymentNote">Opens your email app with your order details filled in. We'll confirm availability and payment (Zelle, Venmo, or Cash) before your date.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Omar's Healthy Food LLC logo">
+      <span class="ft">OMAR'S HEALTHY FOOD LLC<small data-i18n="footTag">Santa Maria, CA · Se habla español</small></span>
+    </div>
+    <div class="footer-meta">
+      <div><strong data-i18n="footPermitLabel">Permit</strong> EH-FDP-24-000743 · 1610 MEHKO</div>
+      <div data-i18n="footNotice">Orders require 2 days' advance notice</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------------- i18n ----------------
+  const dict = {
+    navCta: {en:"Start My Plan", es:"Empieza Tu Plan"},
+    chipPermit: {en:"Permitted Home Kitchen · Santa Maria, CA", es:"Cocina Casera Permitida · Santa Maria, CA"},
+    chipNotice: {en:"2-Day Advance Notice", es:"Aviso de 2 Días"},
+    chipSpanish: {en:"Hablamos Español", es:"Hablamos Español"},
+    heroEyebrow: {en:"Performance Nutrition, Made Personally", es:"Nutrición de Rendimiento, Hecha Personalmente"},
+    heroH: {en:'FOOD BUILT<br>AROUND <span>YOUR GOALS</span>', es:'COMIDA HECHA<br>PARA <span>TUS METAS</span>'},
+    heroSub: {en:"Every plan starts with a conversation — your goals, your restrictions, your schedule. Then we prep it fresh, one-on-one, in a permitted home kitchen. No templates. No guesswork. Just food that works as hard as you do.", es:"Cada plan empieza con una conversación — tus metas, tus restricciones, tu horario. Luego preparamos todo fresco, uno a uno, en una cocina casera permitida. Sin plantillas. Sin adivinar. Solo comida que trabaja tan duro como tú."},
+    heroBtn1: {en:"Start My Plan", es:"Empieza Mi Plan"},
+    heroBtn2: {en:"See the Menu", es:"Ver el Menú"},
+    trustK1: {en:"Issuing Authority", es:"Autoridad Emisora"},
+    trustK2: {en:"Health Permit No.", es:"No. de Permiso Sanitario"},
+    trustK3: {en:"Operation Type", es:"Tipo de Operación"},
+    trustK4: {en:"Location", es:"Ubicación"},
+    trustV4: {en:"Santa Maria, California, USA", es:"Santa Maria, California, EE. UU."},
+    howKicker: {en:"How It Works", es:"Cómo Funciona"},
+    howH: {en:"One-On-One, Every Time", es:"Personalizado, Cada Vez"},
+    howP: {en:"We don't run a fixed menu at you. We build around what you tell us — your goal, your restrictions, your timeline.", es:"No te ofrecemos un menú fijo. Construimos según lo que nos digas — tu meta, tus restricciones, tu tiempo."},
+    how1H: {en:"Tell Us Your Goals", es:"Cuéntanos Tus Metas"},
+    how1P: {en:"Cutting, bulking, maintaining, or just eating better — plus any allergies or diet restrictions we need to know.", es:"Definición, volumen, mantenimiento, o simplemente comer mejor — además de alergias o restricciones que debamos saber."},
+    how2H: {en:"We Build Your Plan", es:"Creamos Tu Plan"},
+    how2P: {en:"Portions, macros, and sauces adjusted to what you actually need — not a one-size-fits-all bowl.", es:"Porciones, macros y salsas ajustadas a lo que realmente necesitas — no un plato genérico."},
+    how3H: {en:"Fresh, Small-Batch Prep", es:"Preparación Fresca en Lotes Pequeños"},
+    how3P: {en:"Made to order in a permitted home kitchen — nothing mass-produced or sitting in a warehouse.", es:"Hecho a pedido en una cocina casera permitida — nada producido en masa ni almacenado."},
+    how4H: {en:"Pickup or Delivery", es:"Recoger o Entrega"},
+    how4P: {en:"Pick up in Santa Maria, or add delivery. Orders need at least 2 days' notice to prep right.", es:"Recoge en Santa Maria, o agrega entrega. Los pedidos necesitan al menos 2 días de aviso."},
+    menuKicker: {en:"The Menu", es:"El Menú"},
+    menuH: {en:"Macros On The Label", es:"Macros en la Etiqueta"},
+    menuP: {en:"Every plate is logged — calories, carbs, fat, and protein — so you always know exactly what you're fueling with.", es:"Cada plato está registrado — calorías, carbohidratos, grasa y proteína — para que siempre sepas con qué te alimentas."},
+    labCal: {en:"Cal", es:"Cal"},
+    labCarb: {en:"Carbs", es:"Carbs"},
+    labFat: {en:"Fat", es:"Grasa"},
+    labPro: {en:"Protein", es:"Proteína"},
+    meal1: {en:"Summer Shrimp Bowl", es:"Tazón de Camarón de Verano"},
+    meal2: {en:"Chicken Teriyaki", es:"Pollo Teriyaki"},
+    meal3: {en:"Chicken Alfredo", es:"Pollo Alfredo"},
+    meal4: {en:"Salmon Bowl", es:"Tazón de Salmón"},
+    meal5: {en:"Meatloaf &amp; Mashed Potatoes", es:"Pastel de Carne y Puré de Papas"},
+    buildKicker: {en:"Build Your Own", es:"Arma el Tuyo"},
+    buildH: {en:"Mix, Match, Your Way", es:"Combina a Tu Manera"},
+    buildP: {en:"Because every great meal deserves the perfect match — swap veggies, bases, and sauces to fit your plan.", es:"Porque toda gran comida merece la combinación perfecta — cambia verduras, bases y salsas según tu plan."},
+    buildCol1: {en:"Veggie Favorites", es:"Verduras Favoritas"},
+    buildCol2: {en:"Healthy Bases", es:"Bases Saludables"},
+    buildCol3: {en:"Signature Sauces", es:"Salsas de la Casa"},
+    veg1: {en:"Green Beans", es:"Ejotes"},
+    veg2: {en:"Baby Carrots", es:"Zanahorias Baby"},
+    veg3: {en:"Broccoli Florets", es:"Ramitos de Brócoli"},
+    veg4: {en:"Tender Asparagus", es:"Espárragos Tiernos"},
+    veg5: {en:"Garlic Buttered Potatoes", es:"Papas con Ajo y Mantequilla"},
+    veg6: {en:"Edamame", es:"Edamame"},
+    veg7: {en:"Chilled Cucumber Slices", es:"Rodajas de Pepino Frías"},
+    base1: {en:"Fluffy White Jasmine Rice", es:"Arroz Jazmín Blanco"},
+    base2: {en:"Savory Cauliflower Rice", es:"Arroz de Coliflor"},
+    sauce1: {en:"Mom's Homemade Tomatillo Hot Sauce", es:"Salsa Picante de Tomatillo Casera de Mamá"},
+    sauce2: {en:"Sweet Chili Sauce", es:"Salsa Dulce de Chile"},
+    sauce3: {en:"Baby Ray's Barbecue", es:"Barbacoa Baby Ray's"},
+    sauce4: {en:"Teriyaki Sauce", es:"Salsa Teriyaki"},
+    noteLabel1: {en:"Pickup:", es:"Recoger:"},
+    noteVal1: {en:"Santa Maria", es:"Santa Maria"},
+    noteLabel2: {en:"Delivery:", es:"Entrega:"},
+    noteVal2: {en:"Available, +$6", es:"Disponible, +$6"},
+    noteLabel3: {en:"Payments:", es:"Pagos:"},
+    noteVal3: {en:"Zelle, Venmo, Cash", es:"Zelle, Venmo, Efectivo"},
+    bundleKicker: {en:"Bundle Deals", es:"Paquetes"},
+    bundleH: {en:"Plan A Week, Not A Meal", es:"Planea Una Semana, No Una Comida"},
+    bundleP: {en:"Set up a standing order around your training week and skip the day-to-day decision fatigue. Ask us for current bundle pricing when you reach out.", es:"Establece un pedido fijo según tu semana de entrenamiento y evita decidir cada día. Pregúntanos los precios actuales de los paquetes al contactarnos."},
+    bundle1H: {en:"5-Meal Weekly Bundle", es:"Paquete Semanal de 5 Comidas"},
+    bundle1P: {en:"One meal a day, five days a week — built around a single goal, so your weekdays are covered without the guesswork.", es:"Una comida al día, cinco días a la semana — construido en torno a una sola meta, para cubrir tu semana sin adivinar."},
+    bundle2H: {en:"10-Meal Bi-Weekly Bundle", es:"Paquete Quincenal de 10 Comidas"},
+    bundle2P: {en:"Ten meals scheduled across two weeks, mixed from the full menu — good for busy, back-to-back schedules.", es:"Diez comidas programadas en dos semanas, mezcladas del menú completo — ideal para horarios ocupados."},
+    bundle3H: {en:"Custom Goal Bundle", es:"Paquete Personalizado"},
+    bundle3P: {en:"Tell us your goal and timeline — cutting, bulking, event prep — and we'll put together a bundle built specifically around it.", es:"Dinos tu meta y tiempo — definición, volumen, preparación para eventos — y armaremos un paquete específico para ti."},
+    bundleCta: {en:"Ask About This Bundle", es:"Pregunta Sobre Este Paquete"},
+    orderKicker: {en:"Start Your Plan", es:"Empieza Tu Plan"},
+    orderH: {en:"Tell Us What You Need", es:"Dinos Qué Necesitas"},
+    noticeText: {en:"<strong>All orders require at least 2 days' advance notice.</strong> This gives us time to prep your meals fresh and exactly to your plan.", es:"<strong>Todos los pedidos requieren al menos 2 días de aviso.</strong> Esto nos da tiempo para preparar tus comidas frescas y exactas a tu plan."},
+    infoL1S: {en:"Goals &amp; restrictions:", es:"Metas y restricciones:"},
+    infoL1: {en:"Let us know your fitness goal, any food allergens, and any diet restrictions — every plan is built one-on-one.", es:"Cuéntanos tu meta física, alergias alimentarias y restricciones de dieta — cada plan se hace de forma personalizada."},
+    infoL2S: {en:"Pickup or delivery:", es:"Recoger o entrega:"},
+    infoL2: {en:"Pickup in Santa Maria, or delivery for +$6.", es:"Recoge en Santa Maria, o entrega por +$6."},
+    infoL3S: {en:"Payment:", es:"Pago:"},
+    infoL3: {en:"Zelle, Venmo, or Cash — orders are confirmed once payment is received.", es:"Zelle, Venmo o Efectivo — los pedidos se confirman al recibir el pago."},
+    infoL4S: {en:"Questions:", es:"Preguntas:"},
+    infoL4: {en:"DM anytime — we speak English and Spanish.", es:"Escríbenos cuando quieras — hablamos inglés y español."},
+    fName: {en:"Full Name", es:"Nombre Completo"},
+    fPhone: {en:"Phone", es:"Teléfono"},
+    fEmail: {en:"Email", es:"Correo Electrónico"},
+    fFulfil: {en:"Pickup or Delivery", es:"Recoger o Entrega"},
+    fPickup: {en:"Pickup (Santa Maria)", es:"Recoger (Santa Maria)"},
+    fDelivery: {en:"Delivery (+$6)", es:"Entrega (+$6)"},
+    fDate: {en:"Requested Date (2-day minimum notice)", es:"Fecha Solicitada (mínimo 2 días de aviso)"},
+    fGoal: {en:"Fitness Goal", es:"Meta Física"},
+    goalOpt1: {en:"Fat Loss", es:"Pérdida de Grasa"},
+    goalOpt2: {en:"Muscle Gain", es:"Ganancia Muscular"},
+    goalOpt3: {en:"Maintenance", es:"Mantenimiento"},
+    goalOpt4: {en:"Athletic Performance", es:"Rendimiento Atlético"},
+    goalOpt5: {en:"General Healthy Eating", es:"Alimentación Saludable General"},
+    goalOpt6: {en:"Other / Not Sure Yet", es:"Otro / Aún No Sé"},
+    fMeals: {en:"Meals / Bundle Interested In", es:"Comidas / Paquete de Interés"},
+    fMealsPh: {en:"e.g. Salmon Bowl x3, 5-Meal Weekly Bundle", es:"ej. Tazón de Salmón x3, Paquete Semanal de 5"},
+    fAllergy: {en:"Food Allergens or Diet Restrictions", es:"Alergias o Restricciones de Dieta"},
+    fAllergyPh: {en:"e.g. shellfish allergy, dairy-free, low-carb", es:"ej. alergia a mariscos, sin lácteos, bajo en carbohidratos"},
+    fNotes: {en:"Anything Else We Should Know", es:"Algo Más Que Debamos Saber"},
+    fNotesPh: {en:"Portion sizes, spice level, training schedule, etc.", es:"Tamaño de porciones, nivel de picante, horario de entrenamiento, etc."},
+    fSubmit: {en:"Send My Order Request", es:"Enviar Mi Pedido"},
+    paymentNote: {en:"Opens your email app with your order details filled in. We'll confirm availability and payment (Zelle, Venmo, or Cash) before your date.", es:"Abre tu app de correo con los detalles de tu pedido. Confirmaremos disponibilidad y pago (Zelle, Venmo o Efectivo) antes de tu fecha."},
+    footTag: {en:"Santa Maria, CA · Se habla español", es:"Santa Maria, CA · Se habla español"},
+    footPermitLabel: {en:"Permit", es:"Permiso"},
+    footNotice: {en:"Orders require 2 days' advance notice", es:"Los pedidos requieren 2 días de aviso"}
+  };
+
+  function applyLang(lang){
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] && dict[key][lang] !== undefined){ el.innerHTML = dict[key][lang]; }
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-ph');
+      if(dict[key] && dict[key][lang] !== undefined){ el.setAttribute('placeholder', dict[key][lang]); }
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-toggle button').forEach(b=>{
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+  }
+  document.querySelectorAll('.lang-toggle button').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLang(btn.getAttribute('data-lang')));
+  });
+
+  // ---------------- 2-day minimum date ----------------
+  const dateInput = document.getElementById('f-date');
+  if(dateInput){
+    const min = new Date();
+    min.setDate(min.getDate() + 2);
+    dateInput.min = min.toISOString().split('T')[0];
+  }
+
+  // ---------------- delivery note toggle ----------------
+  // (kept simple: no extra note element needed beyond radio label itself)
+
+  // ---------------- form submit -> mailto ----------------
+  const form = document.getElementById('orderForm');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(form);
+      const lines = [
+        `Name: ${data.get('name')||''}`,
+        `Phone: ${data.get('phone')||''}`,
+        `Email: ${data.get('email')||''}`,
+        `Pickup/Delivery: ${data.get('fulfil')||''}`,
+        `Requested Date: ${data.get('date')||''}`,
+        `Fitness Goal: ${data.get('goal')||''}`,
+        `Meals / Bundle: ${data.get('meals')||''}`,
+        `Allergens / Restrictions: ${data.get('allergy')||''}`,
+        `Notes: ${data.get('notes')||''}`
+      ];
+      const body = encodeURIComponent(lines.join('\n'));
+      const subject = encodeURIComponent(`Order Request — ${data.get('name')||'New Order'}`);
+      window.location.href = `mailto:orders@omarshealthyfoodllc.com?subject=${subject}&body=${body}`;
+    });
+  }
+</script>
+
+</body>
+</html>
