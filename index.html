@@ -410,11 +410,15 @@
       padding:8px clamp(20px,5vw,56px) 18px;
     }
     .nav-links.open{ display:flex; }
-    .nav-links a{ width:100%; padding:13px 0; border-bottom:1px solid var(--steel-line); }
+    .nav-links a{
+      width:100%; padding:17px 4px; border-bottom:1px solid var(--steel-line);
+      font-size:1rem; letter-spacing:0.02em;
+    }
     .nav-links a:last-child{ border-bottom:none; }
-    .nav-toggle{ display:flex; }
+    .nav-toggle{ display:flex; width:44px; height:44px; }
     .nav-cta{ display:none; }
     .lang-toggle{ order:1; }
+    .lang-toggle button{ padding:9px 14px; font-size:0.75rem; }
   }
 
   @media (max-width:820px){
@@ -424,7 +428,57 @@
   @media (max-width:600px){
     .footer-inner{ flex-direction:column; align-items:flex-start; }
     .footer-meta{ text-align:left; }
+
+    /* bigger, easier-to-tap buttons everywhere */
+    .btn-primary, .contact-phone-btn, .submit-btn{
+      width:100%; justify-content:center;
+      padding:18px 24px; font-size:0.95rem;
+    }
+    .btn-ghost{ font-size:0.95rem; padding-bottom:6px; }
+    .nav-cta{ padding:12px 20px; }
+
+    /* chips: fewer per row, bigger text, easier to read at a glance */
+    .badge-row{ flex-direction:column; align-items:flex-start; gap:8px; }
+    .chip{ font-size:0.74rem; padding:9px 14px; width:100%; }
+
+    /* hero: tighten up so it's not all headline on a small screen */
+    .hero{ padding-top:96px; }
+    .hero-actions{ flex-direction:column; align-items:stretch; gap:14px; }
+    .hero-actions .btn-ghost{ text-align:center; }
+
+    /* menu cards: bigger macro numbers, more breathing room */
+    .macros{ gap:10px; }
+    .macro{ padding:12px 4px; }
+    .macro .num{ font-size:0.95rem; }
+    .macro .lab{ font-size:0.6rem; }
+
+    /* how-it-works / build columns: more line-height, less cramped */
+    .how-step{ padding:26px 22px; }
+    .how-step p{ font-size:0.95rem; }
+    .build-col li{ font-size:1rem; padding:2px 0; }
+    .build-col ul{ gap:15px; }
+    .build-note{ flex-direction:column; align-items:flex-start; gap:12px; }
+
+    /* bundle tiers: stack cleanly, bigger tap area on CTA */
+    .tier-num{ font-size:2.8rem; }
+    .bundle-cta-banner{ text-align:left; }
+    .bcb-chips{ gap:10px; }
+    .info-chip{ font-size:0.8rem; }
+
+    /* contact card: bigger phone button already full-width above */
+    .contact-card{ padding:28px 22px; }
+    .ig-note{ width:100%; justify-content:center; padding:14px 20px; font-size:1rem; }
+
+    /* nav brand: keep wordmark from crowding the hamburger */
+    .brand-text{ font-size:0.86rem; }
+    .brand-text small{ font-size:0.56rem; }
+    .brand img{ height:38px; }
   }
+
+  @media (max-width:380px){
+    .macros{ grid-template-columns:repeat(2,1fr); }
+  }
+
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{ animation:none !important; transition:none !important; }
   }
