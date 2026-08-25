@@ -354,45 +354,40 @@
   .order-info-list .dot{ width:7px; height:7px; border-radius:50%; background:var(--orange); margin-top:8px; flex-shrink:0; }
   .order-info-list strong{ color:var(--chalk); }
 
-  form.order-form{
-    background:var(--panel); border:1px solid var(--steel-line); padding:clamp(26px,4vw,36px);
+  .contact-card{
+    background:var(--panel); border:1px solid var(--steel-line); padding:clamp(30px,5vw,44px);
+    display:flex; flex-direction:column; align-items:center; text-align:center;
   }
-  .field{ margin-bottom:20px; }
-  .field label{
-    display:block; font-family:var(--mono); font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase;
-    color:var(--chalk-dim); margin-bottom:8px;
+  .contact-card h3{
+    font-family:var(--head); font-weight:600; font-size:0.82rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--chalk-dim); margin:0 0 18px;
   }
-  .field input[type="text"],
-  .field input[type="tel"],
-  .field input[type="email"],
-  .field input[type="date"],
-  .field select,
-  .field textarea{
-    width:100%; background:var(--black); border:1px solid var(--steel-line-strong); color:var(--chalk);
-    font-family:var(--body); font-size:0.95rem; padding:12px 13px; border-radius:2px;
-    outline:none; transition:border-color 0.2s ease;
-  }
-  .field textarea{ resize:vertical; min-height:84px; }
-  .field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--orange); }
-  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-  .radio-row{ display:flex; gap:18px; flex-wrap:wrap; }
-  .radio-opt{ display:flex; align-items:center; gap:8px; font-size:0.9rem; color:var(--chalk); }
-  .radio-opt input{ accent-color:var(--orange); width:16px; height:16px; }
-  .delivery-note{ font-size:0.78rem; color:var(--chalk-dim-2); margin-top:8px; display:none; }
-  .delivery-note.show{ display:block; }
-
-  .submit-btn{
-    width:100%; font-family:var(--head); font-weight:600; font-size:0.92rem; letter-spacing:0.05em; text-transform:uppercase;
-    background:var(--orange); color:var(--black); border:none; padding:16px; border-radius:2px; cursor:pointer;
-    display:flex; align-items:center; justify-content:center; gap:10px;
+  .contact-phone-btn{
+    display:inline-flex; align-items:center; gap:12px;
+    background:var(--orange); color:var(--black); text-decoration:none;
+    font-family:var(--mono); font-weight:700; font-size:1.35rem; letter-spacing:0.02em;
+    padding:18px 30px; border-radius:2px;
     transition:background 0.2s ease, transform 0.2s ease;
   }
-  .submit-btn:hover{ background:var(--orange-hot); transform:translateY(-1px); }
-  .submit-btn svg{ width:15px; height:15px; }
-
-  .payment-note{
-    margin-top:16px; font-size:0.78rem; color:var(--chalk-dim-2); text-align:center; line-height:1.6;
+  .contact-phone-btn:hover{ background:var(--orange-hot); transform:translateY(-2px); }
+  .contact-phone-btn svg{ width:20px; height:20px; flex-shrink:0; }
+  .contact-sub{
+    font-size:0.92rem; color:var(--chalk-dim); line-height:1.6; max-width:36ch; margin:16px 0 0;
   }
+  .contact-divider{
+    display:flex; align-items:center; gap:14px; width:100%;
+    font-family:var(--mono); font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--chalk-dim-2); margin:26px 0 20px;
+  }
+  .contact-divider::before, .contact-divider::after{ content:""; flex:1; height:1px; background:var(--steel-line); }
+  .ig-note{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--head); font-weight:500; font-size:0.92rem; color:var(--chalk);
+    border:1px solid var(--steel-line-strong); padding:12px 22px; border-radius:2px;
+    text-decoration:none; transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .ig-note:hover{ border-color:var(--orange); color:var(--orange); }
+  .ig-note svg{ width:18px; height:18px; color:var(--orange); flex-shrink:0; }
 
   /* ---------------- footer ---------------- */
   footer{ border-top:1px solid var(--steel-line); padding:40px 0; }
@@ -775,7 +770,7 @@
   <div class="wrap order-grid">
     <div>
       <span class="kicker" data-i18n="orderKicker">Start Your Plan</span>
-      <h2 class="section-h" data-i18n="orderH">Tell Us What You Need</h2>
+      <h2 class="section-h" data-i18n="orderH">Text Us To Order</h2>
 
       <div class="notice-banner">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -786,73 +781,25 @@
         <li><span class="dot"></span><span><strong data-i18n="infoL1S">Goals &amp; restrictions:</strong> <span data-i18n="infoL1">Let us know your fitness goal, any food allergens, and any diet restrictions — every plan is built one-on-one.</span></span></li>
         <li><span class="dot"></span><span><strong data-i18n="infoL2S">Pickup or delivery:</strong> <span data-i18n="infoL2">Pickup in Santa Maria, or delivery for +$6.</span></span></li>
         <li><span class="dot"></span><span><strong data-i18n="infoL3S">Payment:</strong> <span data-i18n="infoL3">Zelle, Venmo, or Cash — orders are confirmed once payment is received.</span></span></li>
-        <li><span class="dot"></span><span><strong data-i18n="infoL4S">Questions:</strong> <span data-i18n="infoL4">DM anytime — we speak English and Spanish.</span></span></li>
+        <li><span class="dot"></span><span><strong data-i18n="infoL4S">Questions:</strong> <span data-i18n="infoL4">Text us first — we also check Instagram DMs.</span></span></li>
       </ul>
     </div>
 
-    <form class="order-form" id="orderForm">
-      <div class="field">
-        <label for="f-name" data-i18n="fName">Full Name</label>
-        <input type="text" id="f-name" name="name" required>
-      </div>
+    <div class="contact-card">
+      <h3 data-i18n="contactH">Fastest Way To Reach Us</h3>
+      <a class="contact-phone-btn" href="sms:+18056210292">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>(805) 621-0292</span>
+      </a>
+      <p class="contact-sub" data-i18n="contactSub">Text us your order, goals, and any allergies — we'll confirm details and your pickup or delivery time.</p>
 
-      <div class="field-row">
-        <div class="field">
-          <label for="f-phone" data-i18n="fPhone">Phone</label>
-          <input type="tel" id="f-phone" name="phone">
-        </div>
-        <div class="field">
-          <label for="f-email" data-i18n="fEmail">Email</label>
-          <input type="email" id="f-email" name="email">
-        </div>
-      </div>
+      <div class="contact-divider"><span data-i18n="orDivider">or</span></div>
 
-      <div class="field">
-        <label data-i18n="fFulfil">Pickup or Delivery</label>
-        <div class="radio-row">
-          <label class="radio-opt"><input type="radio" name="fulfil" value="Pickup" checked> <span data-i18n="fPickup">Pickup (Santa Maria)</span></label>
-          <label class="radio-opt"><input type="radio" name="fulfil" value="Delivery"> <span data-i18n="fDelivery">Delivery (+$6)</span></label>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="f-date" data-i18n="fDate">Requested Date (2-day minimum notice)</label>
-        <input type="date" id="f-date" name="date" required>
-      </div>
-
-      <div class="field">
-        <label for="f-goal" data-i18n="fGoal">Fitness Goal</label>
-        <select id="f-goal" name="goal">
-          <option data-i18n="goalOpt1">Fat Loss</option>
-          <option data-i18n="goalOpt2">Muscle Gain</option>
-          <option data-i18n="goalOpt3">Maintenance</option>
-          <option data-i18n="goalOpt4">Athletic Performance</option>
-          <option data-i18n="goalOpt5">General Healthy Eating</option>
-          <option data-i18n="goalOpt6">Other / Not Sure Yet</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="f-meals" data-i18n="fMeals">Meals / Bundle Interested In</label>
-        <input type="text" id="f-meals" name="meals" data-i18n-ph="fMealsPh" placeholder="e.g. Salmon Bowl x3, 5-Meal Weekly Bundle">
-      </div>
-
-      <div class="field">
-        <label for="f-allergy" data-i18n="fAllergy">Food Allergens or Diet Restrictions</label>
-        <textarea id="f-allergy" name="allergy" data-i18n-ph="fAllergyPh" placeholder="e.g. shellfish allergy, dairy-free, low-carb"></textarea>
-      </div>
-
-      <div class="field">
-        <label for="f-notes" data-i18n="fNotes">Anything Else We Should Know</label>
-        <textarea id="f-notes" name="notes" data-i18n-ph="fNotesPh" placeholder="Portion sizes, spice level, training schedule, etc."></textarea>
-      </div>
-
-      <button type="submit" class="submit-btn">
-        <span data-i18n="fSubmit">Send My Order Request</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
-      <p class="payment-note" data-i18n="paymentNote">Opens your email app with your order details filled in. We'll confirm availability and payment (Zelle, Venmo, or Cash) before your date.</p>
-    </form>
+      <a class="ig-note" href="https://instagram.com/omars_healthy_foods_llc" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        <span data-i18n="igNote">DM us on Instagram</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -872,7 +819,7 @@
 <script>
   // ---------------- i18n ----------------
   const dict = {
-    navCta: {en:"Start My Plan", es:"Empieza Tu Plan"},
+    navCta: {en:"Text to Order", es:"Envíanos un Mensaje"},
     navHow: {en:"How It Works", es:"Cómo Funciona"},
     navMenu: {en:"Menu", es:"Menú"},
     navTreats: {en:"Treats", es:"Postres"},
@@ -885,7 +832,7 @@
     heroEyebrow: {en:"Performance Nutrition, Made Personally", es:"Nutrición de Rendimiento, Hecha Personalmente"},
     heroH: {en:'FOOD BUILT<br>AROUND <span>YOUR GOALS</span>', es:'COMIDA HECHA<br>PARA <span>TUS METAS</span>'},
     heroSub: {en:"Every plan starts with a conversation — your goals, your restrictions, your schedule. Then we prep it fresh, one-on-one, in a permitted home kitchen. No templates. No guesswork. Just food that works as hard as you do.", es:"Cada plan empieza con una conversación — tus metas, tus restricciones, tu horario. Luego preparamos todo fresco, uno a uno, en una cocina casera permitida. Sin plantillas. Sin adivinar. Solo comida que trabaja tan duro como tú."},
-    heroBtn1: {en:"Start My Plan", es:"Empieza Mi Plan"},
+    heroBtn1: {en:"Text to Order", es:"Envíanos un Mensaje"},
     heroBtn2: {en:"See the Menu", es:"Ver el Menú"},
     trustK1: {en:"Issuing Authority", es:"Autoridad Emisora"},
     trustK2: {en:"Health Permit No.", es:"No. de Permiso Sanitario"},
@@ -975,10 +922,10 @@
     chip1: {en:"✓ Payment upfront", es:"✓ Pago por adelantado"},
     chip2: {en:"✓ Pre-orders only", es:"✓ Sólo pedidos anticipados"},
     chip3: {en:"✓ No last-minute changes", es:"✓ No cambios de último momento"},
-    bundleCta: {en:"Start Your Bundle", es:"Empieza Tu Paquete"},
+    bundleCta: {en:"Text to Order", es:"Envíanos un Mensaje"},
     macroDisclaimer: {en:"★ Macros vary based on sides. ★", es:"★ Macros varían según los acompañamientos. ★"},
     orderKicker: {en:"Start Your Plan", es:"Empieza Tu Plan"},
-    orderH: {en:"Tell Us What You Need", es:"Dinos Qué Necesitas"},
+    orderH: {en:"Text Us To Order", es:"Escríbenos Para Ordenar"},
     noticeText: {en:"<strong>All orders require at least 2 days' advance notice.</strong> This gives us time to prep your meals fresh and exactly to your plan.", es:"<strong>Todos los pedidos requieren al menos 2 días de aviso.</strong> Esto nos da tiempo para preparar tus comidas frescas y exactas a tu plan."},
     infoL1S: {en:"Goals &amp; restrictions:", es:"Metas y restricciones:"},
     infoL1: {en:"Let us know your fitness goal, any food allergens, and any diet restrictions — every plan is built one-on-one.", es:"Cuéntanos tu meta física, alergias alimentarias y restricciones de dieta — cada plan se hace de forma personalizada."},
@@ -987,29 +934,11 @@
     infoL3S: {en:"Payment:", es:"Pago:"},
     infoL3: {en:"Zelle, Venmo, or Cash — orders are confirmed once payment is received.", es:"Zelle, Venmo o Efectivo — los pedidos se confirman al recibir el pago."},
     infoL4S: {en:"Questions:", es:"Preguntas:"},
-    infoL4: {en:"DM anytime — we speak English and Spanish.", es:"Escríbenos cuando quieras — hablamos inglés y español."},
-    fName: {en:"Full Name", es:"Nombre Completo"},
-    fPhone: {en:"Phone", es:"Teléfono"},
-    fEmail: {en:"Email", es:"Correo Electrónico"},
-    fFulfil: {en:"Pickup or Delivery", es:"Recoger o Entrega"},
-    fPickup: {en:"Pickup (Santa Maria)", es:"Recoger (Santa Maria)"},
-    fDelivery: {en:"Delivery (+$6)", es:"Entrega (+$6)"},
-    fDate: {en:"Requested Date (2-day minimum notice)", es:"Fecha Solicitada (mínimo 2 días de aviso)"},
-    fGoal: {en:"Fitness Goal", es:"Meta Física"},
-    goalOpt1: {en:"Fat Loss", es:"Pérdida de Grasa"},
-    goalOpt2: {en:"Muscle Gain", es:"Ganancia Muscular"},
-    goalOpt3: {en:"Maintenance", es:"Mantenimiento"},
-    goalOpt4: {en:"Athletic Performance", es:"Rendimiento Atlético"},
-    goalOpt5: {en:"General Healthy Eating", es:"Alimentación Saludable General"},
-    goalOpt6: {en:"Other / Not Sure Yet", es:"Otro / Aún No Sé"},
-    fMeals: {en:"Meals / Bundle Interested In", es:"Comidas / Paquete de Interés"},
-    fMealsPh: {en:"e.g. Salmon Bowl x3, 5-Meal Weekly Bundle", es:"ej. Tazón de Salmón x3, Paquete Semanal de 5"},
-    fAllergy: {en:"Food Allergens or Diet Restrictions", es:"Alergias o Restricciones de Dieta"},
-    fAllergyPh: {en:"e.g. shellfish allergy, dairy-free, low-carb", es:"ej. alergia a mariscos, sin lácteos, bajo en carbohidratos"},
-    fNotes: {en:"Anything Else We Should Know", es:"Algo Más Que Debamos Saber"},
-    fNotesPh: {en:"Portion sizes, spice level, training schedule, etc.", es:"Tamaño de porciones, nivel de picante, horario de entrenamiento, etc."},
-    fSubmit: {en:"Send My Order Request", es:"Enviar Mi Pedido"},
-    paymentNote: {en:"Opens your email app with your order details filled in. We'll confirm availability and payment (Zelle, Venmo, or Cash) before your date.", es:"Abre tu app de correo con los detalles de tu pedido. Confirmaremos disponibilidad y pago (Zelle, Venmo o Efectivo) antes de tu fecha."},
+    infoL4: {en:"Text us first — we also check Instagram DMs.", es:"Escríbenos primero — también revisamos los mensajes directos de Instagram."},
+    contactH: {en:"Fastest Way To Reach Us", es:"La Forma Más Rápida De Contactarnos"},
+    contactSub: {en:"Text us your order, goals, and any allergies — we'll confirm details and your pickup or delivery time.", es:"Envíanos tu pedido, tus metas y cualquier alergia — confirmaremos los detalles y tu hora de recogida o entrega."},
+    orDivider: {en:"or", es:"o"},
+    igNote: {en:"DM us on Instagram", es:"Escríbenos por Instagram (DM)"},
     footTag: {en:"Santa Maria, CA · Se habla español", es:"Santa Maria, CA · Se habla español"},
     footPermitLabel: {en:"Permit", es:"Permiso"},
     footNotice: {en:"Orders require 2 days' advance notice", es:"Los pedidos requieren 2 días de aviso"}
@@ -1049,39 +978,8 @@
     });
   }
 
-  // ---------------- 2-day minimum date ----------------
-  const dateInput = document.getElementById('f-date');
-  if(dateInput){
-    const min = new Date();
-    min.setDate(min.getDate() + 2);
-    dateInput.min = min.toISOString().split('T')[0];
-  }
-
   // ---------------- delivery note toggle ----------------
   // (kept simple: no extra note element needed beyond radio label itself)
-
-  // ---------------- form submit -> mailto ----------------
-  const form = document.getElementById('orderForm');
-  if(form){
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const data = new FormData(form);
-      const lines = [
-        `Name: ${data.get('name')||''}`,
-        `Phone: ${data.get('phone')||''}`,
-        `Email: ${data.get('email')||''}`,
-        `Pickup/Delivery: ${data.get('fulfil')||''}`,
-        `Requested Date: ${data.get('date')||''}`,
-        `Fitness Goal: ${data.get('goal')||''}`,
-        `Meals / Bundle: ${data.get('meals')||''}`,
-        `Allergens / Restrictions: ${data.get('allergy')||''}`,
-        `Notes: ${data.get('notes')||''}`
-      ];
-      const body = encodeURIComponent(lines.join('\n'));
-      const subject = encodeURIComponent(`Order Request — ${data.get('name')||'New Order'}`);
-      window.location.href = `mailto:orders@omarshealthyfoodllc.com?subject=${subject}&body=${body}`;
-    });
-  }
 </script>
 
 </body>
