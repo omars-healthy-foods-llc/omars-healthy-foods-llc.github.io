@@ -252,6 +252,14 @@
     font-family:var(--mono); font-weight:700; font-size:0.85rem;
     background:var(--orange); color:var(--black); padding:5px 10px; border-radius:2px;
   }
+  .meal-photo-placeholder{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    background:var(--panel-2);
+  }
+  .meal-photo-placeholder svg{ width:34px; height:34px; color:var(--steel); }
+  .meal-photo-placeholder span:not(.meal-price){
+    font-family:var(--mono); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--chalk-dim-2);
+  }
   .meal-body{ padding:22px 22px 24px; flex:1; display:flex; flex-direction:column; }
   .meal-body h3{ font-family:var(--head); font-weight:600; font-size:1.15rem; text-transform:uppercase; letter-spacing:0.01em; margin:0 0 14px; color:var(--chalk); }
   .macros{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:auto; }
@@ -268,16 +276,12 @@
     display:grid; grid-template-columns:1fr 1fr; gap:0;
     background:var(--panel); border:1px solid var(--steel-line); overflow:hidden;
   }
-  .treat-photo{ aspect-ratio:4/3; overflow:hidden; }
+  .treat-photo{ position:relative; aspect-ratio:4/3; overflow:hidden; }
   .treat-photo img{ width:100%; height:100%; object-fit:cover; }
   .treat-facts{ padding:clamp(24px,4vw,34px); display:flex; flex-direction:column; justify-content:center; }
   .treat-facts h3{
     font-family:var(--head); font-weight:600; font-size:1.2rem; text-transform:uppercase; letter-spacing:0.01em;
-    color:var(--chalk); margin:0 0 8px; line-height:1.3;
-  }
-  .treat-price{
-    font-family:var(--mono); font-size:0.74rem; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--orange); margin:0 0 18px;
+    color:var(--chalk); margin:0 0 18px; line-height:1.3;
   }
   .facts-list{ list-style:none; margin:0 0 20px; padding:0; display:flex; flex-direction:column; gap:0; border-top:1px solid var(--steel-line); }
   .facts-list li{
@@ -655,6 +659,12 @@
             "name": "Honey Garlic Mac & Mash Bowl",
             "offers": { "@type": "Offer", "price": "18.00", "priceCurrency": "USD" },
             "nutrition": { "@type": "NutritionInformation", "calories": "690 calories", "proteinContent": "62 g", "carbohydrateContent": "60 g", "fatContent": "22 g" }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Beef Cottage Cheese Bowl",
+            "offers": { "@type": "Offer", "price": "17.00", "priceCurrency": "USD" },
+            "nutrition": { "@type": "NutritionInformation", "calories": "398 calories", "proteinContent": "29.5 g", "carbohydrateContent": "30.5 g", "fatContent": "17.4 g" }
           }
         ]
       },
@@ -665,6 +675,7 @@
           {
             "@type": "MenuItem",
             "name": "PB Oreo Protein Cheesecake",
+            "offers": { "@type": "Offer", "price": "12.00", "priceCurrency": "USD" },
             "nutrition": { "@type": "NutritionInformation", "calories": "315 calories", "proteinContent": "30 g", "carbohydrateContent": "33 g", "fatContent": "6 g" },
             "suitableForDiet": "https://schema.org/PeanutFreeDiet",
             "description": "Contains peanuts."
@@ -672,6 +683,7 @@
           {
             "@type": "MenuItem",
             "name": "Blueberry Protein Cheesecake",
+            "offers": { "@type": "Offer", "price": "12.00", "priceCurrency": "USD" },
             "nutrition": { "@type": "NutritionInformation", "calories": "230 calories", "proteinContent": "28 g", "carbohydrateContent": "21 g", "fatContent": "3 g" }
           },
           {
@@ -958,6 +970,19 @@
           </div>
         </div>
       </div>
+
+      <div class="meal-card">
+        <div class="meal-photo"><img src="images/beef-cottage-cheese-bowl.jpg" alt="Beef Cottage Cheese Bowl — high-protein meal prep, Santa Maria CA" loading="lazy" decoding="async"><span class="meal-price">$17</span></div>
+        <div class="meal-body">
+          <h3 data-i18n="meal9">Beef Cottage Cheese Bowl</h3>
+          <div class="macros">
+            <div class="macro"><span class="num">398</span><span class="lab" data-i18n="labCal">Cal</span></div>
+            <div class="macro"><span class="num">30.5g</span><span class="lab" data-i18n="labCarb">Carbs</span></div>
+            <div class="macro"><span class="num">17.4g</span><span class="lab" data-i18n="labFat">Fat</span></div>
+            <div class="macro"><span class="num">29.5g</span><span class="lab" data-i18n="labPro">Protein</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -974,10 +999,10 @@
       <div class="treat-card">
         <div class="treat-photo">
           <img src="images/cheesecake.jpg" alt="PB Oreo Protein Cheesecake — high-protein dessert, Santa Maria CA" loading="lazy" decoding="async">
+          <span class="meal-price">$12</span>
         </div>
         <div class="treat-facts">
           <h3 data-i18n="treatName">PB Oreo Protein Cheesecake 🍪🥜</h3>
-          <p class="treat-price" data-i18n="priceTBD">Price: TBD</p>
           <ul class="facts-list">
             <li><span class="num">315</span><span class="lab" data-i18n="factCal">Calories</span></li>
             <li><span class="num">30g</span><span class="lab" data-i18n="factPro">Protein</span></li>
@@ -991,10 +1016,10 @@
       <div class="treat-card">
         <div class="treat-photo">
           <img src="images/blueberry-cheesecake.jpg" alt="Blueberry Protein Cheesecake — high-protein dessert, Santa Maria CA" loading="lazy" decoding="async">
+          <span class="meal-price">$12</span>
         </div>
         <div class="treat-facts">
           <h3 data-i18n="treatName2">Blueberry Protein Cheesecake 🫐</h3>
-          <p class="treat-price" data-i18n="priceTBD">Price: TBD</p>
           <ul class="facts-list">
             <li><span class="num">230</span><span class="lab" data-i18n="factCal">Calories</span></li>
             <li><span class="num">28g</span><span class="lab" data-i18n="factPro">Protein</span></li>
@@ -1303,6 +1328,8 @@
     meal6: {en:"Beef Parmesan Meatballs", es:"Albóndigas de Res al Parmesano"},
     meal7: {en:"Turkey Parmesan Meatballs", es:"Albóndigas de Pavo al Parmesano"},
     meal8: {en:"Honey Garlic Mac &amp; Mash Bowl", es:"Tazón de Mac &amp; Mash con Ajo y Miel"},
+    meal9: {en:"Beef Cottage Cheese Bowl", es:"Tazón de Res con Requesón"},
+    photoSoon: {en:"Photo coming soon", es:"Foto próximamente"},
     buildKicker: {en:"Build Your Own", es:"Arma el Tuyo"},
     buildH: {en:"Mix, Match, Your Way", es:"Combina a Tu Manera"},
     buildP: {en:"Because every great meal deserves the perfect match — swap veggies, bases, and sauces to fit your plan.", es:"Porque toda gran comida merece la combinación perfecta — cambia verduras, bases y salsas según tu plan."},
@@ -1338,7 +1365,6 @@
     factFat: {en:"Fat", es:"Grasa"},
     treatAllergen: {en:"Contains Peanuts", es:"Contiene Cacahuate"},
     treatName2: {en:"Blueberry Protein Cheesecake 🫐", es:"Pastel de Queso Proteico de Arándanos 🫐"},
-    priceTBD: {en:"Price: TBD", es:"Precio: Por Confirmar"},
     oatsKicker: {en:"Build Your Own", es:"Arma el Tuyo"},
     oatsH: {en:"Protein Overnight Oats", es:"Avena Nocturna con Proteína"},
     oatsSize: {en:"32 oz", es:"32 oz"},
