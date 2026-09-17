@@ -10,7 +10,6 @@
 <link rel="canonical" href="https://www.omarshealthyfoodsllc.com/">
 
 <!-- Favicons -->
-<!--
 <link rel="icon" href="images/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -18,8 +17,6 @@
 <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="images/android-chrome-512x512.png">
 <link rel="manifest" href="images/site.webmanifest">
--->
-<link rel="icon" type="image/jpeg" href="images/og-preview-favicon.jpg">
 
 <!-- Social share / link preview -->
 <meta property="og:type" content="website">
@@ -95,7 +92,7 @@
     gap:16px;
   }
   .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
-  .brand img{ height:44px; width:auto; }
+  .brand img{ height:44px; width:auto; aspect-ratio:auto; object-fit:contain; }
   .brand-text{ font-family:var(--head); font-weight:600; font-size:0.98rem; letter-spacing:0.02em; color:var(--chalk); line-height:1.15; }
   .brand-text small{ display:block; font-family:var(--mono); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--orange); margin-top:2px; }
 
@@ -494,7 +491,7 @@
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;
   }
   .footer-brand{ display:flex; align-items:center; gap:12px; }
-  .footer-brand img{ height:38px; }
+  .footer-brand img{ height:38px; width:auto; aspect-ratio:auto; object-fit:contain; }
   .footer-brand .ft{ font-family:var(--head); font-weight:600; font-size:0.9rem; color:var(--chalk); }
   .footer-brand .ft small{ display:block; font-family:var(--mono); font-size:0.62rem; color:var(--chalk-dim-2); margin-top:2px; }
   .footer-meta{ font-family:var(--mono); font-size:0.72rem; color:var(--chalk-dim-2); text-align:right; line-height:1.7; }
@@ -571,7 +568,7 @@
     /* nav brand: keep wordmark from crowding the hamburger */
     .brand-text{ font-size:0.86rem; }
     .brand-text small{ font-size:0.56rem; }
-    .brand img{ height:38px; }
+    .brand img{ height:38px; width:auto; aspect-ratio:auto; object-fit:contain; }
   }
 
   @media (max-width:380px){
@@ -752,7 +749,7 @@
 <header>
   <div class="nav wrap">
     <a class="brand" href="#top">
-      <img src="images/logo-black.jpg" alt="Omar's Healthy Foods LLC logo" width="88" height="88">
+      <img src="images/logo-black.jpg" alt="Omar's Healthy Foods LLC logo">
       <span class="brand-text">OMAR'S HEALTHY FOODS<small>EST. 2024 · SANTA MARIA, CA</small></span>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -1269,7 +1266,7 @@
 <footer>
   <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img src="images/logo-black.jpg" alt="Omar's Healthy Foods LLC logo" width="76" height="76" loading="lazy" decoding="async">
+      <img src="images/logo-black.jpg" alt="Omar's Healthy Foods LLC logo" loading="lazy" decoding="async">
       <span class="ft">OMAR'S HEALTHY FOODS LLC<small data-i18n="footTag">Santa Maria, CA · Se habla español</small></span>
     </div>
     <div class="footer-meta">
