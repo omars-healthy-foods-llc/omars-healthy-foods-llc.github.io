@@ -134,6 +134,16 @@
   }
   .nav-cta:hover{ background:var(--orange-hot); transform:translateY(-1px); }
 
+  .nav-order{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:var(--head); font-weight:700; font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase;
+    text-decoration:none; background:var(--orange); color:var(--black);
+    padding:10px 18px; border-radius:2px; white-space:nowrap; border:1px solid var(--orange);
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .nav-order svg{ width:14px; height:14px; flex-shrink:0; }
+  .nav-order:hover, .nav-order:focus-visible{ background:var(--orange-hot); border-color:var(--orange-hot); transform:translateY(-1px); }
+
   /* ---------------- hero ---------------- */
   .hero{
     position:relative;
@@ -242,9 +252,10 @@
   .meal-card{
     background:var(--panel); border:1px solid var(--steel-line);
     overflow:hidden; display:flex; flex-direction:column;
+    text-decoration:none; cursor:pointer;
     transition:border-color 0.25s ease, transform 0.25s ease;
   }
-  .meal-card:hover{ border-color:var(--orange); transform:translateY(-3px); }
+  .meal-card:hover, .meal-card:focus-visible{ border-color:var(--orange); transform:translateY(-3px); }
   .meal-photo{ position:relative; aspect-ratio:4/3; overflow:hidden; }
   .meal-photo img{ width:100%; height:100%; object-fit:cover; }
   .meal-price{
@@ -356,10 +367,11 @@
 
   .tier-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-bottom:22px; }
   .tier-card{
-    background:var(--panel); border:1px solid var(--steel-line); border-radius:2px;
-    padding:26px 22px 22px; text-align:center; transition:border-color 0.25s ease, transform 0.25s ease;
+    display:block; background:var(--panel); border:1px solid var(--steel-line); border-radius:2px;
+    padding:26px 22px 22px; text-align:center; text-decoration:none; cursor:pointer;
+    transition:border-color 0.25s ease, transform 0.25s ease;
   }
-  .tier-card:hover{ transform:translateY(-3px); }
+  .tier-card:hover, .tier-card:focus-visible{ border-color:var(--orange); transform:translateY(-3px); }
   .tier-card.featured{ border-color:var(--orange); background:var(--panel-2); }
   .tier-eyebrow{ font-family:var(--mono); font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--chalk-dim); margin-bottom:6px; }
   .tier-num{ font-family:var(--display); font-size:3.4rem; line-height:1; color:var(--chalk); }
@@ -513,6 +525,7 @@
     .nav-links a:last-child{ border-bottom:none; }
     .nav-toggle{ display:flex; width:44px; height:44px; }
     .nav-cta{ display:none; }
+    .nav-order{ padding:9px 13px; font-size:0.7rem; }
     .lang-toggle{ order:1; }
     .lang-toggle button{ padding:9px 14px; font-size:0.75rem; }
   }
@@ -767,6 +780,10 @@
         <button type="button" data-lang="en" class="active">EN</button>
         <button type="button" data-lang="es">ES</button>
       </div>
+      <a class="nav-order" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span data-i18n="navOrderBtn">Order Now</span>
+      </a>
       <a class="nav-cta" href="#order" data-i18n="navCta">Start My Plan</a>
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" id="navToggleIcon"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -861,7 +878,7 @@
       <span class="menu-tier-range">$15–$16</span>
     </div>
     <div class="menu-grid">
-      <div class="meal-card">
+      <a class="meal-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="meal-photo"><img src="images/teriyaki.jpg" alt="Chicken Teriyaki bowl — macro-friendly meal prep, Santa Maria CA" loading="lazy" decoding="async"><span class="meal-price">$15</span></div>
         <div class="meal-body">
           <h3 data-i18n="meal2">Chicken Teriyaki</h3>
@@ -872,9 +889,9 @@
             <div class="macro"><span class="num">37.3g</span><span class="lab" data-i18n="labPro">Protein</span></div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <div class="meal-card">
+      <a class="meal-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="meal-photo"><img src="images/beef-meatballs.jpg" alt="Beef Parmesan Meatballs — home-cooked meal prep, Santa Maria CA" loading="lazy" decoding="async"><span class="meal-price">$15</span></div>
         <div class="meal-body">
           <h3 data-i18n="meal6">Beef Parmesan Meatballs</h3>
@@ -885,9 +902,9 @@
             <div class="macro"><span class="num">45g</span><span class="lab" data-i18n="labPro">Protein</span></div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <div class="meal-card">
+      <a class="meal-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="meal-photo"><img src="images/turkey-meatballs.jpg" alt="Turkey Parmesan Meatballs — lean meal prep, Santa Maria CA" loading="lazy" decoding="async"><span class="meal-price">$15</span></div>
         <div class="meal-body">
           <h3 data-i18n="meal7">Turkey Parmesan Meatballs</h3>
@@ -898,9 +915,9 @@
             <div class="macro"><span class="num">42g</span><span class="lab" data-i18n="labPro">Protein</span></div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <div class="meal-card">
+      <a class="meal-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="meal-photo"><img src="images/shrimp.jpg" alt="Summer Shrimp Bowl — healthy meal prep, Santa Maria CA" loading="lazy" decoding="async"><span class="meal-price">$16</span></div>
         <div class="meal-body">
           <h3 data-i18n="meal1">Summer Shrimp Bowl</h3>
@@ -911,7 +928,7 @@
             <div class="macro"><span class="num">15.1g</span><span class="lab" data-i18n="labPro">Protein</span></div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
 
     <div class="menu-tier-head menu-tier-head-2">
@@ -919,7 +936,7 @@
       <span class="menu-tier-range">$17–$18</span>
     </div>
     <div class="menu-grid">
-      <div class="meal-card">
+      <a class="meal-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="meal-photo"><img src="images/alfredo.jpg" alt="Chicken Alfredo pasta — high-protein meal prep, Santa Maria CA" loading="lazy" decoding="async"><span class="meal-price">$18</span></div>
         <div class="meal-body">
           <h3 data-i18n="meal3">Chicken Alfredo</h3>
@@ -930,9 +947,9 @@
             <div class="macro"><span class="num">38g</span><span class="lab" data-i18n="labPro">Protein</span></div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <div class="meal-card">
+      <a class="meal-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="meal-photo"><img src="images/salmon.jpg" alt="Salmon Bowl — healthy performance meal, Santa Maria CA" loading="lazy" decoding="async"><span class="meal-price">$18</span></div>
         <div class="meal-body">
           <h3 data-i18n="meal4">Salmon Bowl</h3>
@@ -943,9 +960,9 @@
             <div class="macro"><span class="num">41.8g</span><span class="lab" data-i18n="labPro">Protein</span></div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <div class="meal-card">
+      <a class="meal-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="meal-photo"><img src="images/meatloaf.jpg" alt="Meatloaf and Mashed Potatoes — home-cooked meal prep, Santa Maria CA" loading="lazy" decoding="async"><span class="meal-price">$18</span></div>
         <div class="meal-body">
           <h3 data-i18n="meal5">Meatloaf &amp; Mashed Potatoes</h3>
@@ -956,9 +973,9 @@
             <div class="macro"><span class="num">38g</span><span class="lab" data-i18n="labPro">Protein</span></div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <div class="meal-card">
+      <a class="meal-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="meal-photo"><img src="images/honey-garlic-mac-mash.jpg" alt="Honey Garlic Mac & Mash Bowl — high-protein meal prep, Santa Maria CA" loading="lazy" decoding="async"><span class="meal-price">$18</span></div>
         <div class="meal-body">
           <h3 data-i18n="meal8">Honey Garlic Mac &amp; Mash Bowl</h3>
@@ -969,9 +986,9 @@
             <div class="macro"><span class="num">62g</span><span class="lab" data-i18n="labPro">Protein</span></div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <div class="meal-card">
+      <a class="meal-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="meal-photo"><img src="images/beef-cottage-cheese-bowl.jpg" alt="Beef Cottage Cheese Bowl — high-protein meal prep, Santa Maria CA" loading="lazy" decoding="async"><span class="meal-price">$17</span></div>
         <div class="meal-body">
           <h3 data-i18n="meal9">Beef Cottage Cheese Bowl</h3>
@@ -982,7 +999,7 @@
             <div class="macro"><span class="num">29.5g</span><span class="lab" data-i18n="labPro">Protein</span></div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1138,27 +1155,27 @@
     </div>
 
     <div class="tier-grid">
-      <div class="tier-card">
+      <a class="tier-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="tier-eyebrow" data-i18n="tierOrder">Order</div>
         <div class="tier-num">10</div>
         <div class="tier-unit" data-i18n="tierMeals">Meals</div>
         <div class="tier-pill">5% <span data-i18n="tierOff">Off</span></div>
         <p class="tier-fine" data-i18n="tierFine">Discount applies to standard meals only</p>
-      </div>
-      <div class="tier-card featured">
+      </a>
+      <a class="tier-card featured" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="tier-eyebrow" data-i18n="tierOrder">Order</div>
         <div class="tier-num">15</div>
         <div class="tier-unit" data-i18n="tierMeals">Meals</div>
         <div class="tier-pill">8% <span data-i18n="tierOff">Off</span></div>
         <p class="tier-fine" data-i18n="tierFine">Discount applies to standard meals only</p>
-      </div>
-      <div class="tier-card">
+      </a>
+      <a class="tier-card" href="https://omars-healthy-foods-llc.square.site/s/order" target="_blank" rel="noopener noreferrer">
         <div class="tier-eyebrow" data-i18n="tierOrder">Order</div>
         <div class="tier-num">20</div>
         <div class="tier-unit" data-i18n="tierMeals">Meals</div>
         <div class="tier-pill">10% <span data-i18n="tierOff">Off</span></div>
         <p class="tier-fine" data-i18n="tierFine">Discount applies to standard meals only</p>
-      </div>
+      </a>
     </div>
 
     <div class="panel-grid">
@@ -1434,7 +1451,8 @@
     responseNote: {en:"Expect a reply by text or Instagram DM within 1–2 hours. No response by then? Feel free to call the number above.", es:"Espera una respuesta por mensaje de texto o Instagram DM dentro de 1 a 2 horas. ¿No hemos respondido? Con confianza llama al número de arriba."},
     footTag: {en:"Santa Maria, CA · Se habla español", es:"Santa Maria, CA · Se habla español"},
     footPermitLabel: {en:"Permit", es:"Permiso"},
-    footNotice: {en:"Orders require 2 days' advance notice", es:"Los pedidos requieren 2 días de aviso"}
+    footNotice: {en:"Orders require 2 days' advance notice", es:"Los pedidos requieren 2 días de aviso"},
+    navOrderBtn: {en:"Order Now", es:"Ordena Ahora"}
   };
 
   function applyLang(lang){
